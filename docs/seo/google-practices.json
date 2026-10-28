@@ -1,0 +1,252 @@
+{
+  "reviewedAt": "2026-10-28",
+  "purpose": "Aplicar prácticas oficiales de Google al blog y a la ampliación SEO de SECURIVA. Es un registro de lectura documental y una lista de comprobación; no acredita certificación o realización completa de un curso.",
+  "studyStatus": {
+    "officialDocsReviewed": true,
+    "officialLearningPathsLocated": true,
+    "videoCourseCompleted": false,
+    "certificateEarned": false,
+    "note": "Se revisaron las guías documentales y el anuncio oficial de itinerarios del 6/10/2026. No se afirma que se hayan visto los vídeos ni aprobado un examen. Los intentos de abrir playlists fueron limitados por el servicio de consulta."
+  },
+  "officialLearningPaths": [
+    {
+      "title": "Search fundamentals for beginners",
+      "source": "https://developers.google.com/search/blog/2026/10/seo-learning-paths",
+      "announced": "2026-10-06",
+      "covers": "Funcionamiento de Search, configuración y lectura de Search Console e investigación con Trends.",
+      "recommendedApplication": "Relacionar consultas y necesidades reales con artículos, servicios y conversiones."
+    },
+    {
+      "title": "Technical SEO fundamentals",
+      "source": "https://developers.google.com/search/blog/2026/10/seo-learning-paths",
+      "announced": "2026-10-06",
+      "covers": "Directivas, arquitectura, indexación, duplicados, renderizado y diagnóstico.",
+      "recommendedApplication": "Comprobar HTML generado, canonicals, enlaces y exclusión de borradores antes de desplegar."
+    }
+  ],
+  "limitations": [
+    "Google no garantiza rastreo, indexación o primera posición por seguir una guía.",
+    "El número de artículos y su longitud no sustituyen utilidad, exactitud y edición.",
+    "Las comprobaciones de esta lista necesitan validación contra el build final y producción; los archivos sugeridos pueden cambiar.",
+    "No se inventaron autores, credenciales, testimonios, tarifas o resultados de clientes."
+  ],
+  "checklist": [
+    {
+      "id": "people-first",
+      "priority": "P0",
+      "practice": "Cada artículo debe resolver una decisión concreta del comprador con análisis o material propio.",
+      "source": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "implementation": [
+        "src/data/blogResearch.js",
+        "src/components/BlogLanding.jsx"
+      ],
+      "verify": "Leer el artículo completo sin la keyword objetivo; confirmar que sigue siendo útil y que no repite una landing o fuente.",
+      "assessment": "Los cinco artículos de investigación contienen escenarios didácticos, fichas de decisión y pasos originales. Revisión editorial final pendiente del responsable."
+    },
+    {
+      "id": "accurate-authorship",
+      "priority": "P0",
+      "practice": "Identificar responsable editorial real y cómo se preparó el contenido sin atribuciones o revisión experta ficticias.",
+      "source": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "implementation": [
+        "src/components/BlogLanding.jsx",
+        "src/seo/site.js"
+      ],
+      "verify": "Byline y datos estructurados deben describir la misma entidad. No afirmar revisión técnica de Luca sin que ocurra.",
+      "assessment": "Recomendación de integración; el agente creó borradores asistidos con fuentes primarias."
+    },
+    {
+      "id": "sources",
+      "priority": "P0",
+      "practice": "Separar hechos documentados, ejemplos didácticos y recomendaciones propias; enlazar referencias primarias útiles.",
+      "source": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "implementation": [
+        "src/data/blogResearch.js"
+      ],
+      "verify": "Abrir referencias y contrastar que apoyan las afirmaciones. Los ejemplos no deben parecer experiencias de clientes.",
+      "assessment": "Referencias FIRST, NIST, OWASP y documentación oficial de plataformas, según tema."
+    },
+    {
+      "id": "no-scaled-filler",
+      "priority": "P0",
+      "practice": "No publicar páginas masivas creadas principalmente para manipular ranking y sin utilidad original.",
+      "source": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "implementation": [
+        "src/data/regionalSeo.js",
+        "src/data/pageRegistry.js",
+        "src/data/blogResearch.js"
+      ],
+      "verify": "Los 200 briefs deben quedar fuera de HTML público y sitemap hasta aprobar revisión. No agregar variaciones de ciudad/keyword sin nuevo valor.",
+      "assessment": "La arquitectura editorial separa briefs de contenido publicable."
+    },
+    {
+      "id": "crawlable-html",
+      "priority": "P0",
+      "practice": "Entregar el contenido principal y navegación como HTML accesible para usuarios y buscadores.",
+      "source": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide",
+      "implementation": [
+        "src/entry-server.jsx",
+        "scripts/prerender.mjs"
+      ],
+      "verify": "Leer los archivos dist/blog/*.html sin ejecutar JavaScript y confirmar párrafos, H1, enlaces y FAQ.",
+      "assessment": "Patrón de prerender existente; validar el lote de blog en build final."
+    },
+    {
+      "id": "crawlable-links",
+      "priority": "P0",
+      "practice": "Usar enlaces a páginas reales mediante elementos a con href y texto descriptivo.",
+      "source": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable",
+      "implementation": [
+        "src/components/BlogLanding.jsx",
+        "src/components/ServiceDirectory.jsx"
+      ],
+      "verify": "Cada artículo debe poder alcanzarse desde un índice mediante anchors. Los relacionados no pueden depender solo de onClick.",
+      "assessment": "Incluir índice de blog, categorías y enlaces relacionados al integrar."
+    },
+    {
+      "id": "distinct-titles",
+      "priority": "P1",
+      "practice": "Escribir títulos concisos y específicos del contenido, sin repetir keywords ni boilerplate extenso.",
+      "source": "https://developers.google.com/search/docs/appearance/title-link",
+      "implementation": [
+        "src/data/blogResearch.js",
+        "src/seo/site.js"
+      ],
+      "verify": "Comprobar title único, H1 claro y relación honesta con la pregunta de cada artículo.",
+      "assessment": "Cada artículo nuevo tiene título, énfasis y descripción diferenciados."
+    },
+    {
+      "id": "snippets",
+      "priority": "P1",
+      "practice": "Redactar descripción útil como resumen de la página; Google puede generar su propio snippet.",
+      "source": "https://developers.google.com/search/docs/appearance/snippet",
+      "implementation": [
+        "src/data/blogResearch.js",
+        "src/seo/site.js"
+      ],
+      "verify": "No prometer resultados en la meta description. Revisar coherencia con la sección visible.",
+      "assessment": "Las descripciones resumen una decisión y el alcance del artículo."
+    },
+    {
+      "id": "canonical",
+      "priority": "P0",
+      "practice": "Mantener señales coherentes de URL preferida para páginas duplicadas o muy similares.",
+      "source": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+      "implementation": [
+        "src/seo/site.js",
+        "scripts/prerender.mjs"
+      ],
+      "verify": "Canonical HTTPS por artículo en origen actual; enlazado interno y sitemap al mismo destino. No canonicalizar al futuro .com todavía.",
+      "assessment": "Reutilizar configuración centralizada del proyecto."
+    },
+    {
+      "id": "sitemap",
+      "priority": "P0",
+      "practice": "Incluir las URLs publicadas que importan en el sitemap; enviarlo ayuda al descubrimiento y no garantiza indexación.",
+      "source": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+      "implementation": [
+        "src/data/pageRegistry.js",
+        "src/seo/site.js",
+        "scripts/check-seo.mjs"
+      ],
+      "verify": "Cada artículo publicado aparece una vez; borradores y 404 quedan fuera. No inventar fechas de actualización.",
+      "assessment": "Actualizar registro y validación con el blog, conservar borradores separados."
+    },
+    {
+      "id": "schema-article",
+      "priority": "P1",
+      "practice": "Si se usa BlogPosting o Article, el marcado debe coincidir con el contenido visible y sus datos reales.",
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/article",
+      "implementation": [
+        "src/seo/site.js",
+        "src/data/blogResearch.js"
+      ],
+      "verify": "Headline, autor, URL y fecha coinciden. No usar Review, AggregateRating o autores fabricados para este contenido.",
+      "assessment": "Recomendación para el root al incorporar páginas de blog; el marcado no asegura resultados enriquecidos."
+    },
+    {
+      "id": "preview-noindex",
+      "priority": "P0",
+      "practice": "Mantener borradores y previews fuera de indexación; permitir rastreo de noindex para que la directiva pueda leerse.",
+      "source": "https://developers.google.com/search/docs/crawling-indexing/block-indexing",
+      "implementation": [
+        "src/seo/site.js",
+        "scripts/prerender.mjs"
+      ],
+      "verify": "Build preview genera meta noindex; producción publica solo registros aprobados. Robots no debe ocultar la directiva noindex.",
+      "assessment": "Aprovechar isIndexableBuild y comprobar variables Vercel."
+    },
+    {
+      "id": "mobile-experience",
+      "priority": "P1",
+      "practice": "Verificar contenido y navegación completos en móvil y una experiencia que permita usar la página.",
+      "source": "https://developers.google.com/search/docs/appearance/page-experience",
+      "implementation": [
+        "src/components/BlogLanding.jsx",
+        "src/components/BlogLanding.css"
+      ],
+      "verify": "Revisar 390px, teclado, legibilidad, índice, enlaces y CTA sin desbordes. No añadir animación pesada al cuerpo editorial.",
+      "assessment": "Recomendación de QA visual para integración; sin promesa de puntaje o efecto en ranking."
+    },
+    {
+      "id": "monitor",
+      "priority": "P1",
+      "practice": "Usar Search Console para entender resultados e incidencias y relacionar cambios con datos.",
+      "source": "https://developers.google.com/search/blog/2026/10/seo-learning-paths",
+      "implementation": [
+        "docs/seo-market-plan.md"
+      ],
+      "verify": "Registrar fecha de publicación y consultar páginas/país/queries tras un periodo con datos. No declarar cero tráfico si no se midió.",
+      "assessment": "Conexión y estado de la propiedad los valida el root. El agente no accedió a la cuenta."
+    },
+    {
+      "id": "ai-search",
+      "priority": "P1",
+      "practice": "Mantener fundamentos de búsqueda para funciones generativas; no añadir un marcado inventado como requisito de GEO.",
+      "source": "https://developers.google.com/search/docs/appearance/ai-features",
+      "implementation": [
+        "src/seo/site.js",
+        "src/data/blogResearch.js"
+      ],
+      "verify": "Contenido indexable, claro, contrastable y con snippets permitidos según preferencias; separar elegibilidad de citas efectivas.",
+      "assessment": "Los artículos son recursos para compradores; no prometen recomendaciones de asistentes."
+    }
+  ],
+  "suggestedReviewOrder": [
+    "people-first",
+    "accurate-authorship",
+    "sources",
+    "no-scaled-filler",
+    "crawlable-html",
+    "crawlable-links",
+    "distinct-titles",
+    "canonical",
+    "sitemap",
+    "schema-article",
+    "preview-noindex",
+    "mobile-experience",
+    "monitor"
+  ],
+  "researchPosts": [
+    {
+      "path": "/blog/bug-bounty-privado-o-pentest",
+      "visibleWords": 856
+    },
+    {
+      "path": "/blog/cvss-severidad-impacto-negocio",
+      "visibleWords": 795
+    },
+    {
+      "path": "/blog/presupuesto-recompensas-bug-bounty",
+      "visibleWords": 825
+    },
+    {
+      "path": "/blog/plan-30-dias-despues-pentest",
+      "visibleWords": 813
+    },
+    {
+      "path": "/blog/seguridad-saas-roles-tenants-integraciones",
+      "visibleWords": 808
+    }
+  ]
+}

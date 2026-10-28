@@ -21,6 +21,17 @@ for (const page of seoPages) {
   assert.ok(html.includes(`content="${indexable ? 'index, follow, max-image-preview:large' : 'noindex, follow'}"`), `${page.path}: estado de indexación incorrecto`)
   assert.ok(!html.includes('<!--app-html-->') && !html.includes('<!--seo-head:'), `${page.path}: quedaron puntos de inserción vacíos`)
   assert.ok(!html.includes('<div id="root"></div>'), `${page.path}: falta contenido prerenderizado`)
+  assert.ok(html.includes(`property="og:image" content="${metadata.image}"`),`${page.path}: imagen social incorrecta`)
+  if (page.socialImage) {
+    const social = await fs.readFile(path.join(output,page.socialImage.slice(1)))
+    assert.equal(social.subarray(0,8).toString('hex'),'89504e470d0a1a0a')
+    assert.equal(social.readUInt32BE(16),1200)
+    assert.equal(social.readUInt32BE(20),630)
+  }
+  for (const match of html.matchAll(/<a\b[^>]*href="(\/(?!\/)[^"]*)"/g)) {
+    const href=match[1].split(/[?#]/)[0] || '/'
+    assert.ok(seoPages.some(item=>item.path===href),`${page.path}: enlace interno sin página publicada: ${href}`)
+  }
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])
   assert.equal(schema['@context'], 'https://schema.org')
   assert.ok(!schema['@graph'].some(item => ['Review', 'AggregateRating'].includes(item['@type']) || item.address || item.geo))

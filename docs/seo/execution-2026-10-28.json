@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-28",
+  "site": "https://securiva.vercel.app/",
+  "deployment": {
+    "publishedPages": 11,
+    "countriesServedRemotely": ["Argentina", "México"],
+    "verified": "HTTP 200, HTML propio, H1, idioma, canonical y schema en las 11 URLs; sitemap de 11 URLs; ruta inexistente HTTP 404.",
+    "verificationScript": "node scripts/verify-deployment.mjs"
+  },
+  "googleSearchConsole": {
+    "property": "https://securiva.vercel.app/",
+    "ownershipVerified": true,
+    "method": "HTML meta tag",
+    "sitemapSubmitted": "https://securiva.vercel.app/sitemap.xml",
+    "observedSitemapStatus": "Correcto",
+    "observedDiscoveredUrls": 11,
+    "indexedUrls": null,
+    "rankingPositions": null
+  },
+  "bingWebmasterTools": {
+    "property": "https://securiva.vercel.app/",
+    "ownershipVerified": true,
+    "method": "HTML meta tag",
+    "sitemapSubmitted": "https://securiva.vercel.app/sitemap.xml",
+    "observedSitemapStatus": "Processing",
+    "indexedUrls": null
+  },
+  "indexNow": {
+    "submittedUrls": 11,
+    "responseStatus": 202,
+    "meaning": "Aceptado; validación de la clave pendiente. No confirma indexación ni ranking."
+  },
+  "backlinks": {
+    "source": "https://github.com/LucaFront-End/securiva",
+    "existingHomepageLink": true,
+    "repositoryDescriptionUpdated": true,
+    "newContextualDestinations": [
+      "https://securiva.vercel.app/preparar-pentest",
+      "https://securiva.vercel.app/recursos/checklist-pentesting-white-label",
+      "https://securiva.vercel.app/recursos/presupuesto-bug-bounty-privado",
+      "https://securiva.vercel.app/argentina",
+      "https://securiva.vercel.app/mexico"
+    ],
+    "observedRel": "nofollow",
+    "newReferringDomainsConfirmed": 0,
+    "purchasedLinks": 0,
+    "outreachMessagesSent": 0,
+    "directoryApplication": {
+      "directory": "https://pentest.fyi/about/",
+      "status": "prepared_not_submitted",
+      "blocker": "Exige correo corporativo y bloquea Gmail; el usuario confirmó que no tiene correo de SECURIVA. No se inventó una dirección."
+    }
+  },
+  "regionalContent": {
+    "plannedRoutes": 200,
+    "plannedCityRoutesPublished": 0,
+    "countryHubsPublished": 2,
+    "reason": "Los briefs de ciudad requieren contenido diferencial y revisión; no se generan landing pages repetidas cambiando el nombre de la ciudad."
+  },
+  "validation": {
+    "uniqueTestsPassed": 27,
+    "productionBuild": "passed",
+    "seoBuildCheck": "passed",
+    "mobileWidthsChecked": [390, 320],
+    "horizontalOverflowObserved": false,
+    "toolCopyAndDownload": "verified",
+    "contactDialog": "verified_without_sending"
+  },
+  "pending": [
+    "Rastreo, indexación y datos de consultas de buscadores.",
+    "Revisión y publicación editorial de cada oportunidad regional.",
+    "Correo corporativo para directorios que lo requieren.",
+    "Nuevos dominios de referencia externos y aprobaciones de perfiles.",
+    "Opiniones y puntuaciones auténticas antes de publicar testimonios.",
+    "Analítica conectada y registro comercial de consultas recibidas."
+  ]
+}

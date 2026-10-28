@@ -6,6 +6,10 @@ El objetivo comercial es conseguir consultas de agencias y empresas que puedan c
 
 ## Estado de la implementación
 
+**Ejecución verificada el 28/10/2026:** las 11 páginas están publicadas y comprobadas en producción. Google Search Console y Bing Webmaster Tools están verificados con etiquetas HTML. Google aceptó el sitemap y muestra 11 URLs descubiertas; Bing lo recibió y lo procesa. IndexNow recibió las 11 URLs con HTTP 202, pendiente de validación de clave. Esto no confirma indexación ni posiciones. El registro detallado está en [execution-2026-10-28.json](seo/execution-2026-10-28.json).
+
+Se publicaron cinco destinos contextuales nuevos desde el README de GitHub, verificados con `rel=nofollow`, y se actualizó la descripción del repositorio. El dominio de referencia ya existía: no se cuenta como un dominio nuevo. La ficha de pentest.fyi quedó preparada y sin enviar porque requiere correo corporativo; el usuario confirmó que no dispone de él.
+
 El lote inicial de esta ampliación contiene **11 páginas publicables**: cinco páginas existentes, dos hubs de país y cuatro páginas de recursos. El registro técnico está en `src/data/pageRegistry.js`; el despliegue y las herramientas de webmaster deben comprobarse por separado. El hecho de que una URL aparezca en sitemap no demuestra que esté indexada ni posicione.
 
 | Página | Decisión que resuelve |

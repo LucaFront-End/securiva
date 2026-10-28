@@ -44,7 +44,7 @@ export function getPageMetadata(pathname = '/', env = {}) {
     ...page,
     canonical,
     origin,
-    image: `${origin}${siteIdentity.socialImage}`,
+    image: `${origin}${page.socialImage || siteIdentity.socialImage}`,
     indexable: isIndexableBuild(env),
   }
 }
@@ -104,15 +104,16 @@ export function getStructuredData(page) {
     })
   }
   if (isArticle) graph.push({
-    '@type':'Article', '@id':`${page.canonical}#article`, headline:page.title,
+    '@type':page.isBlog ? 'BlogPosting' : 'Article', '@id':`${page.canonical}#article`, headline:page.title,
     description:page.description, inLanguage:page.language || 'es',
-    author:{'@type':'Person',name:'Luca Dessena Maffucci'},
+    author:{'@type':'Person','@id':`${page.origin}/sobre-securiva#luca-dessena-maffucci`,name:'Luca Dessena Maffucci',url:`${page.origin}/sobre-securiva#luca-dessena-maffucci`},
     publisher:{'@id':organizationId}, mainEntityOfPage:{'@id':webpageId},
-    datePublished:'2026-10-28', dateModified:'2026-10-28',
+    datePublished:page.updatedAt || '2026-10-28', dateModified:page.updatedAt || '2026-10-28',
+    image:page.image,
   })
   if (page.path !== '/') graph.push({
     '@type':'BreadcrumbList', '@id':`${page.canonical}#breadcrumb`,
-    itemListElement:[{'@type':'ListItem',position:1,name:'SECURIVA',item:`${page.origin}/`},{'@type':'ListItem',position:2,name:page.title.split(' | ')[0],item:page.canonical}],
+    itemListElement:page.isBlog ? [{'@type':'ListItem',position:1,name:'SECURIVA',item:`${page.origin}/`},{'@type':'ListItem',position:2,name:'Blog',item:`${page.origin}/blog`},{'@type':'ListItem',position:3,name:page.title.split(' | ')[0],item:page.canonical}] : [{'@type':'ListItem',position:1,name:'SECURIVA',item:`${page.origin}/`},{'@type':'ListItem',position:2,name:page.title.split(' | ')[0],item:page.canonical}],
   })
   return { '@context': 'https://schema.org', '@graph': graph }
 }
@@ -138,12 +139,12 @@ export function renderSeoHead(page) {
     `<meta property="og:image" content="${esc(page.image)}" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="${esc(siteIdentity.socialImageAlt)}" />`,
+    `<meta property="og:image:alt" content="${esc(page.socialImageAlt || siteIdentity.socialImageAlt)}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${esc(page.title)}" />`,
     `<meta name="twitter:description" content="${esc(page.description)}" />`,
     `<meta name="twitter:image" content="${esc(page.image)}" />`,
-    `<meta name="twitter:image:alt" content="${esc(siteIdentity.socialImageAlt)}" />`,
+    `<meta name="twitter:image:alt" content="${esc(page.socialImageAlt || siteIdentity.socialImageAlt)}" />`,
     `<script type="application/ld+json">${structuredData}</script>`,
   ].join('\n    ')
 }

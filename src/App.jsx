@@ -13,13 +13,12 @@ import ServiceDirectory from './components/ServiceDirectory'
 import ServiceLanding, { NotFoundPage } from './components/ServiceLanding'
 import { servicePages } from './data/seoPages'
 import { regionalHubs } from './data/regionalSeo'
-import { publishedResourcePages } from './data/pageRegistry'
-import ResourceLanding from './components/ResourceLanding'
 import { observeContactLinks, trackEvent } from './lib/analytics'
 import useEditorialMotion from './hooks/useEditorialMotion'
 import { CONTACT_EMAIL, CONTACT_WHATSAPP } from './config'
 
 const LiquidArt = lazy(() => import('./components/LiquidArt'))
+const KnowledgeRoutes = lazy(() => import('./components/KnowledgeRoutes'))
 function Brand() {
   return <a className="brand" href="#inicio" aria-label="SECURIVA — inicio"><img src="/brand/securiva-mark-dark.svg" alt="" width="31" height="36"/><span>SECURIVA</span></a>
 }
@@ -35,7 +34,7 @@ function HomePage() {
     <a className="skip-link" href="#contenido">Saltar al contenido</a>
     <header className="editorial-header">
       <Brand/>
-      <nav className={menu?'main-nav is-open':'main-nav'} aria-label="Navegación principal"><a href="#servicios" onClick={()=>setMenu(false)}>Qué hacemos</a><a href="#agencias" onClick={()=>setMenu(false)}>Para agencias</a><a href="#metodo" onClick={()=>setMenu(false)}>Cómo pensamos</a></nav>
+      <nav className={menu?'main-nav is-open':'main-nav'} aria-label="Navegación principal"><a href="#servicios" onClick={()=>setMenu(false)}>Qué hacemos</a><a href="#agencias" onClick={()=>setMenu(false)}>Para agencias</a><a href="#metodo" onClick={()=>setMenu(false)}>Cómo pensamos</a><a href="/blog">Blog</a></nav>
       <button className="header-cta" onClick={()=>openContact()}>Hablemos <ArrowUpRight size={17}/></button>
       <button className="menu-button" aria-label={menu?'Cerrar menú':'Abrir menú'} aria-expanded={menu} onClick={()=>setMenu(!menu)}>{menu?<X/>:<Menu/>}</button>
     </header>
@@ -66,9 +65,9 @@ export default function App({ path = '/' }) {
   useEffect(() => observeContactLinks(), [])
   const pathname = path === '/' ? '/' : '/' + path.replace(/^\/+|\/+$/g, '')
   if (pathname === '/') return <HomePage/>
-  const resource = publishedResourcePages.find(page => page.path === pathname)
-  if (resource) return <ResourceLanding page={resource}/>
+  if (pathname === '/blog' || pathname.startsWith('/blog/') || pathname === '/recursos' || pathname.startsWith('/recursos/') || pathname === '/preparar-pentest' || pathname === '/sobre-securiva') {
+    return <Suspense fallback={<main className="sl-not-found"><p className="sl-mono">SECURIVA / CONOCIMIENTO APLICADO</p><p>Cargando contenido…</p></main>}><KnowledgeRoutes path={pathname}/></Suspense>
+  }
   const page = [...servicePages, ...regionalHubs].find(service => service.path === pathname)
   return page ? <ServiceLanding page={page}/> : <NotFoundPage/>
 }
-

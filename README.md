@@ -3,6 +3,7 @@
 Auditorías de vulnerabilidades, pentesting web y API y ciberseguridad white label para agencias, empresas y SaaS de Argentina y México. Evaluaciones remotas en español, alcance autorizado e informes con evidencia reproducible.
 
 - [Conocer SECURIVA](https://securiva.vercel.app/)
+- [Blog de seguridad: 16 artículos prácticos](https://securiva.vercel.app/blog)
 - [Preparar el alcance de un pentest — herramienta gratuita](https://securiva.vercel.app/preparar-pentest)
 - [Checklist de pentesting white label para agencias](https://securiva.vercel.app/recursos/checklist-pentesting-white-label)
 - [Cómo estructurar el presupuesto de investigación privada](https://securiva.vercel.app/recursos/presupuesto-bug-bounty-privado)
@@ -83,7 +84,7 @@ Los certificados pertenecen a Luca Dessena Maffucci. Se presentan las fechas de 
 
 ## SEO, GEO y publicación en Vercel
 
-npm run build ejecuta Vite y scripts/prerender.mjs. Se generan 11 páginas HTML completas: inicio, cuatro servicios, cobertura en /argentina y /mexico, /recursos, /preparar-pentest y dos guías. src/data/pageRegistry.js es la lista única de páginas publicadas. Los enlaces son anchors normales; hydrateRoot conserva el HTML al activar las interacciones.
+npm run build ejecuta Vite y scripts/prerender.mjs. Se generan 29 páginas HTML completas: inicio, cuatro servicios, cobertura en /argentina y /mexico, presentación del responsable técnico, recursos, herramienta, dos guías, índice de blog y 16 artículos. src/data/pageRegistry.js es la lista única de páginas publicadas. Los enlaces son anchors normales; hydrateRoot conserva el HTML al activar las interacciones.
 
 Producción usa canonical en https://securiva.vercel.app, sitemap, robots, Open Graph con PNG de 1200×630 y datos estructurados Organization/WebSite/WebPage/Service. No se generan estrellas, reseñas estructuradas ni direcciones físicas. vercel.json configura URLs limpias sin un rewrite global que convierta rutas inexistentes en la home.
 
@@ -97,6 +98,12 @@ src/lib/analytics.js emite eventos en dataLayer y securiva:analytics: contact_di
 
 Para GEO, revisar la inclusión en funciones generativas y su reporte en Search Console, la actividad de citas en Bing y el acceso de los rastreadores de búsqueda. No se exige llms.txt ni un schema especial para IA. Fuentes: [Google AI features](https://developers.google.com/search/docs/appearance/ai-features), [control de inclusión](https://support.google.com/webmasters/answer/16908024), [reporte generativo](https://support.google.com/webmasters/answer/16984139), [OpenAI crawlers](https://developers.openai.com/api/docs/bots).
 
+## Blog y contenido
+
+Los 16 artículos se agrupan en pentesting, APIs, agencias, bug bounty y gestión. Incluyen referencias primarias, ejemplos hipotéticos identificados, enlaces relacionados y CTA de alcance. BlogPosting describe el contenido visible con autor, fechas e imagen social propia de1200×630. La búsqueda local tolera tildes; filtros y enlaces se renderizan sin depender de una petición externa. KnowledgeRoutes se carga por ruta para conservar liviana la portada.
+
+La revisión de las guías oficiales y su aplicación está en docs/seo/google-practices.json. Se consultaron las rutas formativas de Google, sin afirmar haber completado vídeos ni una certificación. Los cambios se miden en Search Console y Bing; no existe garantía de posición.
+
 ## Verificación
 
 `node --test tests/security-choreography.test.mjs tests/process-choreography.test.mjs`: once pruebas de continuidad de posición y velocidad, reversibilidad, valores límite y poses mecánicas; incluye los límites reales de la geometría en 101 poses de escritorio y móvil. El proceso se revisó con pin a 1200×850, 390×844 y 320×640, y en lectura natural a 390×550. El progreso fraccionario avanza y retrocede dentro de un mismo capítulo. El renderer conserva una sola instancia de canvas y no reinicia su reloj al cambiar el texto.
@@ -104,4 +111,3 @@ Para GEO, revisar la inclusión en funciones generativas y su reporte en Search 
 `node --test tests/service-choreography.test.mjs`: cinco pruebas adicionales para movimiento sin scroll, continuidad del ciclo y su velocidad, orden de validación del hallazgo, separación de las cubiertas y límites de la geometría real. Las fichas se revisaron a 1200×850 y 390×844: solo la visible mantiene su reloj; todas se pausan al salir de servicios. Las tres escenas usan entre 26 y 36 meshes cada una y comparten el código de Three.js en un único chunk diferido.
 
 `npm run build` correcto. Revisión visual del avance y retroceso con scroll, botones de salto, proceso 3D fijo, reveal white label y control manual, apertura de certificados y CTA contextual de contacto. Sin desbordamiento horizontal ni errores de consola observados. El envío de mensajes no se ejecutó durante las pruebas. Vite avisa del tamaño del chunk 3D, que se descarga de forma diferida al acercarse a la escena.
-

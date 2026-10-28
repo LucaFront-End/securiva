@@ -1,6 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { seoPages } from '../src/data/pageRegistry.js'
+import { blogPosts } from '../src/data/blog.js'
 import { DEFAULT_SITE_URL, getPageMetadata, getStructuredData, isIndexableBuild, normalizePagePath, renderRobots, renderSeoHead, renderSitemap, resolveSiteUrl } from '../src/seo/site.js'
 
 test('the public origin defaults to the live site and accepts an explicit domain migration', () => {
@@ -101,3 +102,18 @@ test('country pages use their actual service coverage and resources are articles
   assert.ok(!graph.some(item => item['@type'] === 'Service'))
 })
 
+test('blog entries have article metadata, author identity and working related routes', () => {
+  assert.equal(blogPosts.length,16)
+  for (const post of blogPosts) {
+    const metadata=getPageMetadata(post.path)
+    const graph=getStructuredData(metadata)['@graph']
+    const article=graph.find(item=>item['@type']==='BlogPosting')
+    assert.ok(article,post.path)
+    assert.equal(article.author.url,`${DEFAULT_SITE_URL}/sobre-securiva#luca-dessena-maffucci`)
+    assert.equal(article.image,metadata.image)
+    assert.equal(article.datePublished,post.updatedAt)
+    assert.ok(!graph.some(item=>item['@type']==='Service'))
+    assert.equal(graph.find(item=>item['@type']==='BreadcrumbList').itemListElement.length,3)
+    for (const path of post.relatedPaths) assert.ok(seoPages.some(page=>page.path===path),`${post.path}: ${path}`)
+  }
+})
