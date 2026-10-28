@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { ArrowLeft, ArrowUpRight, Check, Copy, Download, Mail, MessageCircle, X } from 'lucide-react'
 import { CONTACT_EMAIL, CONTACT_WHATSAPP } from '../config'
+import { trackEvent } from '../lib/analytics'
 
 const services = ['Pentesting', 'White label', 'Private Bug Bounty']
 
@@ -65,8 +66,12 @@ export default function ContactDialog({ open, onClose, initialService }) {
     setChannel(preferred)
     setCopyStatus('')
     if (preferred === 'whatsapp' && whatsapp) {
+      trackEvent('brief_prepared', { service, channel:preferred, placement:'contact_dialog' })
+      trackEvent('contact_whatsapp_open', { service, channel:'whatsapp', placement:'contact_dialog' })
       window.open(whatsappUrl(text), '_blank', 'noopener,noreferrer')
     } else if (preferred === 'email' && email) {
+      trackEvent('brief_prepared', { service, channel:preferred, placement:'contact_dialog' })
+      trackEvent('contact_email_open', { service, channel:'email', placement:'contact_dialog' })
       window.location.href = mailUrl(text)
     }
   }

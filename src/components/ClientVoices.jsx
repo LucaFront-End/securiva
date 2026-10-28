@@ -1,64 +1,54 @@
-import { useCallback, useEffect, useId, useRef, useState } from 'react'
-import { ArrowLeft, ArrowRight, MoveHorizontal } from 'lucide-react'
-import { approvedReviews } from '../data/socialProof'
+import { useEffect, useId, useRef } from 'react'
+import { ArrowUpRight, MoveHorizontal } from 'lucide-react'
+import { approvedReviews, illustrativeCases } from '../data/socialProof'
 import './ClientVoices.css'
 
-const reservedTopics = ['El impacto en el proyecto', 'La experiencia con el equipo', 'El acompañamiento técnico']
+function VoiceCard({ item, illustrative, duplicate = false }) {
+  return <article className={'cv-card cv-card-' + (item.accent || 'paper')} aria-hidden={duplicate || undefined}>
+    <div className="cv-card-topline"><span>{illustrative ? 'CASO ILUSTRATIVO' : 'EXPERIENCIA DE CLIENTE'}</span><ArrowUpRight size={15} strokeWidth={1.3} aria-hidden="true"/></div>
+    {illustrative ? <div className="cv-card-copy"><h3>{item.title}</h3><p>{item.description}</p></div> : <blockquote className="cv-quote">{item.quote}</blockquote>}
+    <div className="cv-card-footer"><span className="cv-monogram" aria-hidden="true">{item.initials || item.company?.slice(0, 2).toUpperCase() || 'S'}</span><div><strong>{illustrative ? item.company : item.name}</strong><span>{illustrative ? item.category : [item.role, item.company].filter(Boolean).join(' · ')}</span></div><span className="cv-card-dot" aria-hidden="true"/></div>
+  </article>
+}
+
+function VoiceRow({ items, reverse, illustrative, index }) {
+  const group = items.length >= 8 ? items : Array.from({ length:Math.max(8, items.length * 2) }, (_, i) => items[i % items.length])
+  return <div className={'cv-row ' + (reverse ? 'cv-row-reverse' : '')} aria-label={'Fila ' + (index + 1)}>
+    <div className="cv-conveyor" style={{ '--cv-duration': group.length * 19 + 's' }}>
+      <div className="cv-group" role="list">{group.map((item, i) => <div key={(item.id || item.name) + '-' + i} role="listitem" aria-hidden={i >= items.length || undefined}><VoiceCard item={item} illustrative={illustrative}/></div>)}</div>
+      <div className="cv-group cv-group-copy" aria-hidden="true">{group.map((item, i) => <div key={(item.id || item.name) + '-' + i}><VoiceCard item={item} illustrative={illustrative} duplicate/></div>)}</div>
+    </div>
+  </div>
+}
 
 export default function ClientVoices({ motionEnabled = true, data = approvedReviews }) {
-  const reviews = Array.isArray(data) ? data.filter(review => review && typeof review.quote === 'string' && review.quote.trim() && typeof review.name === 'string' && review.name.trim()) : []
-  const empty = reviews.length === 0
-  const items = empty ? reservedTopics : reviews
-  const trackRef = useRef(null)
+  const sectionRef = useRef(null)
   const id = useId()
-  const [edges, setEdges] = useState({ start: true, end: false })
-
-  const updateEdges = useCallback(() => {
-    const track = trackRef.current
-    if (!track) return
-    const next = { start: track.scrollLeft <= 2, end: track.scrollLeft + track.clientWidth >= track.scrollWidth - 2 }
-    setEdges(previous => previous.start === next.start && previous.end === next.end ? previous : next)
-  }, [])
+  const reviews = Array.isArray(data) ? data.filter(review => typeof review?.quote === 'string' && review.quote.trim() && typeof review?.name === 'string' && review.name.trim()) : []
+  const illustrative = reviews.length === 0
+  const items = illustrative ? illustrativeCases : reviews
+  const split = Math.ceil(items.length / 2)
+  const rows = [items.slice(0, split), items.slice(split)]
+  if (!rows[1].length) rows[1] = rows[0]
 
   useEffect(() => {
-    const track = trackRef.current
-    if (!track) return
-    updateEdges()
-    const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(updateEdges) : undefined
-    observer?.observe(track)
-    window.addEventListener('resize', updateEdges, { passive: true })
-    return () => { observer?.disconnect(); window.removeEventListener('resize', updateEdges) }
-  }, [items.length, updateEdges])
+    const section = sectionRef.current
+    if (!section) return undefined
+    let visible = true
+    const sync = () => { section.dataset.running = String(motionEnabled && visible && !document.hidden) }
+    const observer = typeof IntersectionObserver !== 'undefined' ? new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync() }, { rootMargin:'160px' }) : null
+    observer?.observe(section)
+    document.addEventListener('visibilitychange', sync)
+    sync()
+    return () => { observer?.disconnect(); document.removeEventListener('visibilitychange', sync) }
+  }, [motionEnabled])
 
-  function move(direction) {
-    const track = trackRef.current
-    const card = track?.querySelector('.cv-card')
-    if (!track || !card) return
-    const gap = Number.parseFloat(window.getComputedStyle(track).columnGap) || 20
-    track.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: motionEnabled ? 'smooth' : 'auto' })
-  }
-
-  function keyboard(event) {
-    if (event.altKey || event.ctrlKey || event.metaKey) return
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-      event.preventDefault()
-      move(event.key === 'ArrowLeft' ? -1 : 1)
-    } else if (event.key === 'Home' || event.key === 'End') {
-      event.preventDefault()
-      trackRef.current?.scrollTo({ left: event.key === 'Home' ? 0 : trackRef.current.scrollWidth, behavior: motionEnabled ? 'smooth' : 'auto' })
-    }
-  }
-
-  return <section className={`cv-section ${!motionEnabled ? 'cv-motion-off' : ''}`} aria-labelledby={`${id}-title`}>
-    <div className="cv-shell">
-      <div className="cv-heading" data-reveal><div><span className="cv-eyebrow">{empty ? 'VISTA PREVIA · RESEÑAS POR INCORPORAR' : 'EXPERIENCIAS DE CLIENTES'}</span><h2 id={`${id}-title`}>La experiencia,<br /><span>en sus palabras.</span></h2></div><span className="cv-quotation" aria-hidden="true">“</span></div>
-      <div ref={trackRef} id={`${id}-track`} className="cv-track" tabIndex={0} role="region" aria-roledescription="carrusel" aria-label={empty ? 'Vista previa de espacios reservados para reseñas reales' : 'Reseñas de clientes'} onScroll={updateEdges} onKeyDown={keyboard}>
-        {items.map((item, index) => <article key={empty ? item : `${item.name}-${index}`} className={`cv-card ${empty ? 'cv-card-reserved' : ''}`} tabIndex={0} aria-roledescription="diapositiva" aria-label={empty ? `Espacio para una reseña real: ${item}` : `Reseña de ${item.name}`}>
-          <div className="cv-card-topline"><span>{empty ? 'ESPACIO RESERVADO' : 'RESEÑA DE CLIENTE'}</span><span className="cv-card-corner" aria-hidden="true">“</span></div>
-          {empty ? <><p className="cv-placeholder">Espacio para<br />una reseña real<span>.</span></p><div className="cv-card-footer"><span className="cv-slot-line" aria-hidden="true" /><span>{item}</span></div></> : <><blockquote className="cv-quote">{item.quote}</blockquote><div className="cv-card-footer cv-author"><strong>{item.name}</strong>{(item.role || item.company) && <span>{[item.role, item.company].filter(Boolean).join(' · ')}</span>}</div></>}
-        </article>)}
-      </div>
-      <div className="cv-bottomline"><p>{empty ? 'Este espacio se completará con experiencias reales y autorizadas.' : 'La perspectiva de quienes han trabajado con SECURIVA.'}</p><div className="cv-controls"><span><MoveHorizontal size={16} aria-hidden="true" /> EXPLORA</span><button type="button" aria-label="Reseña anterior" aria-controls={`${id}-track`} disabled={edges.start} onClick={() => move(-1)}><ArrowLeft size={20} aria-hidden="true" /></button><button type="button" aria-label="Siguiente reseña" aria-controls={`${id}-track`} disabled={edges.end} onClick={() => move(1)}><ArrowRight size={20} aria-hidden="true" /></button></div></div>
+  return <section ref={sectionRef} id="experiencias" className={'cv-section ' + (!motionEnabled ? 'cv-motion-off' : '')} data-running={motionEnabled} aria-labelledby={id + '-title'}>
+    <div className="cv-shell cv-heading" data-reveal><div><span className="cv-eyebrow">04 / SEGURIDAD EN CONTEXTO</span><h2 id={id + '-title'}>{illustrative ? <>El valor está<br/><span>en lo que cambia.</span></> : <>La experiencia,<br/><span>en sus palabras.</span></>}</h2></div><p className="cv-intro">{illustrative ? 'Comercio, pagos e identidad. Distintos productos, el mismo criterio: entender el riesgo y hacerlo accionable.' : 'La perspectiva de quienes han trabajado con SECURIVA, compartida con su autorización.'}</p></div>
+    <div className="cv-marquees" role="region" aria-label={illustrative ? 'Ejemplos ilustrativos de evaluación de seguridad' : 'Experiencias de clientes'} tabIndex={0}>
+      {rows.map((row, index) => <VoiceRow key={index} items={row} reverse={index === 1} illustrative={illustrative} index={index}/>)}
+      <div className="cv-edge cv-edge-left" aria-hidden="true"/><div className="cv-edge cv-edge-right" aria-hidden="true"/>
     </div>
+    <div className="cv-shell cv-bottomline"><p>{illustrative ? 'Textos ilustrativos sobre los tipos de proyectos compartidos. No son citas ni resultados atribuidos a estas marcas.' : 'Testimonios reales publicados con autorización.'}</p><span className="cv-flow-note"><MoveHorizontal size={15} aria-hidden="true"/> DOS PERSPECTIVAS. UN MISMO RIGOR.</span></div>
   </section>
 }

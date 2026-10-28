@@ -1,6 +1,6 @@
 # SECURIVA
 
-Landing local en React + Vite. Dirección editorial: «Lo invisible, a la vista». La etapa actual se centra en diseño e interacción; SEO/GEO y páginas geográficas quedan para la segunda etapa.
+Web de SECURIVA en React + Vite, con HTML estático para buscadores e hidratación para las interacciones. Dirección editorial: «Lo invisible, a la vista». El origen de producción actual es https://securiva.vercel.app.
 
 ## Ejecutar
 
@@ -11,6 +11,7 @@ npm install
 npm run dev
 npm test
 npm run build
+npm run check:seo
 npm run preview
 ```
 
@@ -25,7 +26,7 @@ npm run preview
 - Informe white label cuya identidad cambia con el scroll, con comparación manual por ratón, tacto y teclado.
 - Metodología con una plataforma isométrica 3D propia y un encuadre protagonista: perímetro hexagonal, núcleo por capas, escáner óptico, cartucho de evidencia, reporte articulado y sello de retest. La investigación abre y desplaza las capas; la demostración extrae el cartucho sobre guías y levanta el reporte; el retest recompone el núcleo. Acero satinado cepillado, cantos pulidos, vidrio oscuro, iluminación y sombras acompañan la transformación continua y reversible.
 - El proceso queda fijo durante un recorrido breve (1,3 alturas de pantalla en escritorio; 1,1 en móvil). Los cuatro pasos y entregables siguen el scroll. En pantallas bajas pasa a lectura natural y la transformación concluye mientras la escena completa sigue visible; sus controles mantienen la selección manual.
-- Carrusel de reseñas implementado. `approvedReviews` está vacío: la maqueta identifica los espacios reservados y no atribuye opiniones ficticias.
+- Marquee de experiencias en dos filas con direcciones opuestas, loop continuo y blur en los bordes. approvedReviews está separado de illustrativeCases: los textos actuales son escenarios ilustrativos identificados, sin citas ficticias ni ratings. Los testimonios reales reemplazan el contenido de ejemplo cuando estén disponibles.
 - Credenciales profesionales con documentos originales, abanico ligado al scroll y cierre con wordmark de partículas.
 - Formulario que valida y prepara un brief para WhatsApp o correo. El visitante revisa y envía; no hay envío automático ni backend.
 
@@ -72,9 +73,21 @@ Correo: dessenaluca53@gmail.com. WhatsApp: +54 11 2654 7874. El formulario no gu
 
 Los certificados pertenecen a Luca Dessena Maffucci. Se presentan las fechas de los documentos aportados: OSCP+ (2021), CPTS (2022) e ISC2 CC (ciclo 2023–2025). ISC2 CC no es CISSP. La vigencia actual debe confirmarse antes de anunciar credenciales activas. No se incluyó CCNA porque no se aportó documento. El informe es ilustrativo y no muestra datos de clientes. No se publican los precios hipotéticos del manual.
 
-## Publicación y segunda etapa
+## SEO, GEO y publicación en Vercel
 
-La página permanece local y contiene `noindex, nofollow`. Para la segunda etapa quedan dominio, indexación, canonical, imagen social, contenido y datos estructurados SEO/GEO. No se crearon páginas por ciudad.
+npm run build ejecuta Vite y scripts/prerender.mjs. Se generan HTML completos y metadatos específicos para /, /pentesting-web, /seguridad-api, /white-label-ciberseguridad y /bug-bounty-privado. Los enlaces son anchors normales; hydrateRoot conserva el HTML al activar las interacciones.
+
+Producción usa canonical en https://securiva.vercel.app, sitemap, robots, Open Graph con PNG de 1200×630 y datos estructurados Organization/WebSite/WebPage/Service. No se generan estrellas, reseñas estructuradas ni direcciones físicas. vercel.json configura URLs limpias sin un rewrite global que convierta rutas inexistentes en la home.
+
+Variables de build: SEO_SITE_URL (o SITE_URL) cambia el origen HTTPS. VERCEL_ENV=preview, SEO_NOINDEX=true o SEO_INDEXABLE=false dejan los HTML en noindex y omiten el sitemap. El servidor de desarrollo también usa noindex. securiva.com no se usa hasta adquirirlo y configurarlo.
+
+Para migrar al .com: conectar y verificar el dominio en Vercel, emitir HTTPS, actualizar SEO_SITE_URL, desplegar, redirigir permanentemente cada URL anterior a su equivalente, actualizar sitemap/enlaces y verificar las propiedades en Search Console y Bing. No redirigir todas las páginas a la home.
+
+La estrategia de 90 días cubre contenido por intención, evidencia profesional, guías originales, medición y expansión local con información propia. No se generaron páginas duplicadas por ciudad. Falta conectar las cuentas de Search Console/Bing y una herramienta de analítica, enviar el sitemap y completar las acciones externas de autoridad.
+
+src/lib/analytics.js emite eventos en dataLayer y securiva:analytics: contact_dialog_open, brief_prepared, contact_whatsapp_open y contact_email_open. No instala GA4/GTM, no envía datos externos por sí mismo y no registra el contenido del formulario. Abrir WhatsApp o correo no confirma que una consulta haya sido recibida; ese resultado se registra en el proceso comercial.
+
+Para GEO, revisar la inclusión en funciones generativas y su reporte en Search Console, la actividad de citas en Bing y el acceso de los rastreadores de búsqueda. No se exige llms.txt ni un schema especial para IA. Fuentes: [Google AI features](https://developers.google.com/search/docs/appearance/ai-features), [control de inclusión](https://support.google.com/webmasters/answer/16908024), [reporte generativo](https://support.google.com/webmasters/answer/16984139), [OpenAI crawlers](https://developers.openai.com/api/docs/bots).
 
 ## Verificación
 

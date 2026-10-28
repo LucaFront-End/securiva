@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://securiva.vercel.app/sitemap.xml

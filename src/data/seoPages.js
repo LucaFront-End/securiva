@@ -1,0 +1,107 @@
+export const seoPages = [
+  { path:'/', kind:'home', title:'Pentesting y ciberseguridad white label en México | SECURIVA', description:'Auditorías de vulnerabilidades y pentesting web y API para empresas y agencias en México. Informes white label, evidencia y retest según alcance.' },
+  { path:'/pentesting-web', kind:'pentest', serviceName:'Pentesting de aplicaciones web', title:'Pentesting de aplicaciones web en México | SECURIVA', description:'Pruebas de penetración web con alcance autorizado, validación manual y evidencia reproducible. Prioriza correcciones y define el retest con SECURIVA.' },
+  { path:'/seguridad-api', kind:'api', serviceName:'Pentesting de APIs e integraciones', title:'Pentesting de APIs e integraciones en México | SECURIVA', description:'Evalúa autenticación, permisos, separación entre usuarios y lógica de negocio en tus APIs. Alcance definido e informe técnico con SECURIVA.' },
+  { path:'/white-label-ciberseguridad', kind:'label', serviceName:'Ciberseguridad white label para agencias', title:'Ciberseguridad white label para agencias | SECURIVA', description:'Suma pentesting a los servicios de tu agencia con informes bajo tu marca. SECURIVA realiza las pruebas y tú conservas la relación con tu cliente.' },
+  { path:'/bug-bounty-privado', kind:'bounty', serviceName:'Investigación privada de vulnerabilidades', title:'Bug bounty privado e investigación de vulnerabilidades | SECURIVA', description:'Investigación privada con activación fija, hallazgos validados y presupuesto máximo acordado. Define alcance, severidad y entregables con SECURIVA.' },
+]
+
+export const servicePages = [
+  {
+    path:'/pentesting-web', kind:'pentest', number:'01', label:'Pentesting web', contactService:'Pentesting',
+    title:'Pentesting web.', emphasis:'Con evidencia.',
+    summary:'Un pentest web es una evaluación autorizada de una aplicación para identificar y validar debilidades explotables dentro de un alcance definido. SECURIVA revisa autenticación, sesiones, permisos y flujos de negocio, y entrega evidencia para que tu equipo pueda priorizar las correcciones.',
+    forWhom:'Para empresas, agencias y equipos SaaS que necesitan evaluar una aplicación antes de un lanzamiento, una integración o un cambio importante.',
+    promise:'Del hallazgo a una corrección que se pueda verificar.',
+    topics:[
+      { title:'Autenticación y sesiones', text:'Revisamos cómo se inicia, mantiene y termina una sesión dentro de las condiciones autorizadas.' },
+      { title:'Roles y permisos', text:'Contrastamos las acciones permitidas para cada cuenta y los límites entre usuarios u organizaciones.' },
+      { title:'Flujos de negocio', text:'Investigamos secuencias y estados de los procesos prioritarios, además de patrones técnicos conocidos.' },
+      { title:'Validación e impacto', text:'Las herramientas apoyan la investigación. Los hallazgos se validan con evidencia y contexto.' },
+    ],
+    inputs:['Aplicación y entorno que se revisarán','Roles y cuentas de prueba','Flujos e integraciones prioritarios','Autorización y condiciones de las pruebas'],
+    deliverables:[['Alcance documentado','Activos, objetivos, condiciones y exclusiones.'],['Informe ejecutivo','Impacto y prioridades expresados para tomar decisiones.'],['Evidencia técnica','Pasos de reproducción y recomendaciones de corrección.'],['Retest acordado','Verificación de las correcciones incluidas en la cotización.']],
+    faq:[
+      { question:'¿Un escaneo y un pentest son lo mismo?', answer:'Un escaneo automatizado detecta patrones y posibles problemas. Un pentest incorpora investigación y validación manual para comprobar contexto e impacto. La cotización debe aclarar los objetivos, la profundidad y los límites de cobertura.' },
+      { question:'¿Se puede evaluar una aplicación en producción?', answer:'El entorno y las condiciones se acuerdan antes de comenzar. Si se evalúa producción, deben quedar definidos los permisos, las ventanas de prueba, las limitaciones y el canal de coordinación. También puede acordarse un entorno de pruebas representativo.' },
+      { question:'¿Cuánto cuesta y cuánto tarda un pentest web?', answer:'El precio y el calendario dependen de la complejidad, los roles, los flujos y los accesos disponibles. Primero revisamos el alcance; después confirmamos la cotización y reservamos la entrega. No se ofrece cobertura indefinida por un precio genérico.' },
+      { question:'¿Incluye retest de las correcciones?', answer:'La propuesta indica si incluye una ronda de retest, qué hallazgos cubre y en qué plazo puede solicitarse. El retest verifica las correcciones acordadas; nuevos activos o funcionalidades pueden necesitar otra evaluación.' },
+    ],
+    cta:'Definir el alcance de mi aplicación', reference:{label:'OWASP Web Security Testing Guide',url:'https://owasp.org/www-project-web-security-testing-guide/'},
+  },
+  {
+    path:'/seguridad-api', kind:'api', number:'02', label:'Seguridad de APIs', contactService:'Pentesting',
+    title:'Seguridad de APIs.', emphasis:'En cada conexión.',
+    summary:'La evaluación de seguridad de una API revisa cómo se autentican las solicitudes, qué acciones permite cada rol y cómo se protege la información entre usuarios e integraciones. SECURIVA delimita las operaciones y los flujos autorizados para investigar permisos, separación de datos y lógica de negocio.',
+    forWhom:'Para equipos SaaS, plataformas de e-commerce y agencias que desarrollan APIs o conectan sistemas de sus clientes.',
+    promise:'Entender qué puede hacer cada identidad, en cada operación.',
+    topics:[
+      { title:'Inventario de operaciones', text:'Definimos los métodos, rutas y flujos que forman parte de la evaluación.' },
+      { title:'Autorización por objeto y función', text:'Contrastamos los límites entre cuentas, roles, recursos y organizaciones.' },
+      { title:'Sesiones e integraciones', text:'Revisamos los mecanismos de acceso y cómo se utilizan en las conexiones incluidas.' },
+      { title:'Estados y lógica de negocio', text:'Investigamos cómo se comportan las operaciones prioritarias cuando cambia la secuencia del proceso.' },
+    ],
+    inputs:['Inventario de operaciones o documentación disponible','Roles y cuentas de prueba separadas','Integraciones y límites entre organizaciones','Entorno, permisos y flujos críticos autorizados'],
+    deliverables:[['Mapa del alcance','Operaciones, roles, integraciones y exclusiones.'],['Hallazgos validados','Evidencia sobre accesos y acciones fuera del comportamiento esperado.'],['Reproducción técnica','Solicitudes y pasos necesarios para comprender el hallazgo.'],['Corrección y retest','Recomendaciones y validación según las condiciones acordadas.']],
+    faq:[
+      { question:'¿Qué documentación necesitan para revisar una API?', answer:'Ayuda disponer de OpenAPI, colecciones de solicitudes u otra documentación de operaciones. También necesitamos cuentas de prueba, roles, flujos prioritarios y condiciones de acceso. Si no existe un inventario, se acuerda cómo construirlo antes de cerrar el alcance.' },
+      { question:'¿Cómo se cuenta una operación de API?', answer:'Para delimitar el alcance, una operación combina un método HTTP con una ruta funcional. Cambiar el identificador de un objeto no crea automáticamente una operación nueva. La complejidad, los roles y los estados del flujo también se valoran al cotizar.' },
+      { question:'¿Revisan APIs de terceros conectadas a mi aplicación?', answer:'Solo se prueban los activos autorizados por su responsable. Podemos evaluar el uso de una integración dentro de tu aplicación, pero probar directamente un sistema ajeno requiere autorización específica y un alcance independiente.' },
+      { question:'¿Sirve para APIs con varias organizaciones o tiendas?', answer:'Sí, cuando esa separación se incluye en el alcance. Se necesitan cuentas y datos de prueba que permitan contrastar los límites entre usuarios, roles u organizaciones sin acceder a información ajena a las condiciones autorizadas.' },
+    ],
+    cta:'Revisar el alcance de mi API', reference:{label:'OWASP API Security Project',url:'https://owasp.org/www-project-api-security/'},
+  },
+  {
+    path:'/white-label-ciberseguridad', kind:'label', number:'03', label:'White label para agencias', contactService:'White label',
+    title:'Ciberseguridad white label.', emphasis:'Con tu marca.',
+    summary:'El servicio de ciberseguridad white label permite a una agencia incorporar evaluaciones de seguridad a sus proyectos y entregar el informe con su identidad. SECURIVA realiza el trabajo técnico dentro del alcance autorizado. La agencia conserva la relación comercial y coordina con nosotros los entregables y la comunicación.',
+    forWhom:'Para agencias de desarrollo web, e-commerce y software que quieren ofrecer seguridad a sus clientes sin incorporar esa capacidad a su equipo interno.',
+    promise:'Tú mantienes la relación. Nosotros aportamos la investigación.',
+    topics:[
+      { title:'Tu identidad en la entrega', text:'El informe ejecutivo y técnico puede llevar la marca de tu agencia.' },
+      { title:'Responsabilidades claras', text:'Definimos quién autoriza, quién proporciona los accesos y cómo se coordina el proyecto.' },
+      { title:'Soporte al equipo técnico', text:'La evidencia y las recomendaciones ayudan a conversar sobre correcciones concretas.' },
+      { title:'Precio y alcance antes de empezar', text:'Cada evaluación se cotiza con activos, profundidad, calendario y condiciones definidos.' },
+    ],
+    inputs:['Proyecto del cliente y objetivos de la agencia','Identidad visual para el informe','Autorización del responsable de los activos','Canal y responsables de coordinación'],
+    deliverables:[['Informe con tu marca','Contenido ejecutivo y técnico personalizado con tu identidad.'],['Evidencia reproducible','Hallazgos documentados para que el equipo pueda actuar.'],['Reunión de entrega','Explicación y coordinación dentro del alcance acordado.'],['Retest definido','Condiciones, horas y ventana de solicitud en la propuesta.']],
+    faq:[
+      { question:'¿SECURIVA contacta directamente a mi cliente?', answer:'La comunicación se acuerda con la agencia antes de comenzar. La agencia mantiene la relación comercial y define con SECURIVA si las reuniones técnicas se realizan a través de su equipo o con participación del cliente final.' },
+      { question:'¿El informe puede llevar únicamente la marca de mi agencia?', answer:'La modalidad white label permite personalizar la identidad visual de la entrega. Antes del trabajo se confirman el formato, las responsabilidades y las condiciones de presentación del servicio.' },
+      { question:'¿Puedo ofrecer el servicio antes de contratar una evaluación?', answer:'Podemos ayudarte a delimitar la propuesta con la información del proyecto. El alcance y el calendario deben confirmarse antes de prometer cobertura o fechas a tu cliente.' },
+      { question:'¿Cómo se calcula el precio para agencias?', answer:'Revisamos los activos, los roles, los flujos y el nivel de acompañamiento solicitado. SECURIVA cotiza su trabajo técnico y la agencia define su propuesta comercial al cliente final. Las condiciones quedan por escrito antes de iniciar las pruebas.' },
+    ],
+    cta:'Cotizar una evaluación para mi agencia',
+  },
+  {
+    path:'/bug-bounty-privado', kind:'bounty', number:'04', label:'Investigación privada', contactService:'Private Bug Bounty',
+    title:'Bug bounty privado.', emphasis:'Impacto validado.',
+    summary:'La investigación privada de SECURIVA combina una activación fija con honorarios variables por vulnerabilidades elegibles y validadas. Antes de comenzar se acuerdan los activos, las severidades, la deduplicación y el máximo económico. SECURIVA realiza la investigación y entrega los hallazgos con evidencia y recomendaciones.',
+    forWhom:'Para agencias, empresas y equipos SaaS con activos delimitados que buscan una fase de investigación privada con reglas económicas explícitas.',
+    promise:'Base definida. Hallazgos validados. Máximo aprobado.',
+    topics:[
+      { title:'Investigación realizada por SECURIVA', text:'Se delimita una fase de trabajo especializada sobre activos autorizados.' },
+      { title:'Elegibilidad y causa raíz', text:'Los hallazgos deben ser válidos, reproducibles y cumplir las reglas de deduplicación acordadas.' },
+      { title:'Impacto y severidad', text:'La clasificación considera el contexto del negocio y la evidencia; no solo la etiqueta de una herramienta.' },
+      { title:'Presupuesto máximo', text:'La base, la tabla variable y el tope se aprueban antes de comenzar una fase.' },
+    ],
+    inputs:['Activos y condiciones de autorización','Hallazgos conocidos y reglas de deduplicación','Tabla de severidades y validación','Base, presupuesto máximo y entregables'],
+    deliverables:[['Reglas por escrito','Alcance, elegibilidad, severidades y condiciones económicas.'],['Hallazgos con evidencia','Causa raíz, impacto, reproducción y recomendaciones.'],['Resumen de la investigación','Trabajo realizado, cobertura y límites de la fase.'],['Retest según propuesta','Verificación de las correcciones acordadas.']],
+    faq:[
+      { question:'¿Solo pago si encuentran vulnerabilidades?', answer:'La modalidad combina una base fija por la investigación con honorarios variables por hallazgos elegibles y validados. Si no hay hallazgos facturables, la base sigue cubriendo el trabajo realizado. El presupuesto máximo se acuerda antes de comenzar.' },
+      { question:'¿Cómo evitan cobrar varias veces el mismo problema?', answer:'Se acuerdan reglas de causa raíz, corrección compartida y duplicados antes de las pruebas. Varias instancias de un mismo problema no se convierten automáticamente en varios cargos. Los hallazgos conocidos deben informarse al definir la fase.' },
+      { question:'¿Qué pasa cuando se alcanza el presupuesto máximo?', answer:'Se detienen las nuevas pruebas conforme a las reglas aprobadas y se entregan todos los hallazgos ya encontrados. El tratamiento de la validación y el retest queda definido en la propuesta. Una nueva fase necesita aprobación independiente.' },
+      { question:'¿Participa una comunidad de hackers externos?', answer:'La modalidad descrita corresponde a investigación realizada por SECURIVA. Incorporar investigadores externos requiere un programa y un fondo de recompensas independientes, además de sus reglas operativas y de participación.' },
+    ],
+    cta:'Definir una fase de investigación',
+  },
+]
+
+export const commonFaqs = [
+  { question:'¿Qué hace SECURIVA?', answer:'SECURIVA realiza auditorías de vulnerabilidades y pentesting de aplicaciones web y APIs, con una modalidad white label para agencias. Las evaluaciones se realizan sobre activos autorizados, con alcance definido, evidencia y recomendaciones para priorizar correcciones.' },
+  { question:'¿Atienden empresas y agencias en México?', answer:'La evaluación de aplicaciones web y APIs se coordina de forma remota con empresas y agencias en México. Antes de comenzar se acuerdan los activos, los accesos de prueba, el calendario y la autorización por escrito.' },
+  { question:'¿Qué necesitan para cotizar una auditoría?', answer:'Necesitamos conocer la aplicación o API, el entorno, los roles, los flujos prioritarios y las integraciones. Con esa información se confirma el alcance, el calendario y el precio antes de iniciar las pruebas.' },
+  { question:'¿Qué recibe mi equipo al terminar?', answer:'Un informe con el alcance, los hallazgos validados, sus pasos de reproducción, el impacto observado y recomendaciones de corrección. La propuesta también define la reunión de entrega y las condiciones del retest cuando se incluye.' },
+  { question:'¿Una auditoría garantiza que no habrá incidentes?', answer:'Una evaluación aporta evidencia sobre los activos y las condiciones revisados en un momento determinado. La cobertura tiene límites y las aplicaciones cambian. Por eso documentamos el alcance, las exclusiones y las recomendaciones junto con los hallazgos.' },
+  { question:'¿Puedo ofrecer pentesting con la marca de mi agencia?', answer:'Sí. En la modalidad white label, SECURIVA realiza el trabajo técnico y el informe puede llevar la identidad de tu agencia. Antes de comenzar se definen la autorización, las responsabilidades y la comunicación con el cliente final.' },
+]
