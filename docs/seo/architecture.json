@@ -1,0 +1,89 @@
+{
+  "project": "SECURIVA",
+  "prepared_at": "2026-10-28",
+  "scope": "Argentina y México: cobertura remota de pentesting web, APIs, white label e investigación privada.",
+  "implementation_file": "D:/Workspace/Assets/Securiva/src/data/regionalSeo.js",
+  "facts_and_limits": [
+    "El usuario confirmó permiso para mostrar relaciones con las marcas proporcionadas. No aportó reseñas literales, puntuaciones ni resultados medidos por cliente.",
+    "No se cuenta con evidencia de oficinas, equipos presenciales o proyectos identificables en cada ciudad; la cobertura publicada debe ser remota.",
+    "Las 200 combinaciones de intención y ciudad son un plan editorial, no 200 documentos sustantivos preparados para indexación.",
+    "No se midieron volúmenes, dificultad, posición actual ni conversiones por palabra clave. Las prioridades son hipótesis de ejecución, no un ranking de demanda.",
+    "Ninguna implementación puede garantizar el primer puesto de Google ni menciones de sistemas generativos."
+  ],
+  "model": {
+    "countries": 2,
+    "cities_per_country": 25,
+    "service_intents": 4,
+    "planned_city_service_routes": 200,
+    "route_shape": "/{pais}/{ciudad}/{servicio}",
+    "example": "/argentina/buenos-aires/white-label-ciberseguridad",
+    "delivery_mode": "remote",
+    "new_country_hubs_ready": ["/argentina", "/mexico"],
+    "city_service_pages_published_by_this_task": 0,
+    "city_service_pages_indexable_by_default": 0
+  },
+  "export_contract": {
+    "coverageCountries": "Identidad del país, idioma y modo de atención. No declara sedes.",
+    "regionalHubs": "Dos objetos de contenido que conservan el contrato de ServiceLanding: title/emphasis, topics, inputs, deliverables, FAQ, CTA, reference. Agregan marketLabel, language, countryCode y lista de ciudades como cobertura remota.",
+    "regionalSeoMetadata": "Metadatos de los dos hubs listos para extender seoPages. Ajustar areaServed e inLanguage según país.",
+    "regionalServiceIntents": "Cuatro intenciones de compra con decisión que resuelven, preguntas, artefacto original y evidencia requerida.",
+    "plannedRegionalPages": "200 briefs con URL futura, intención, país, ciudad, idioma, prioridad editorial y publicación deshabilitada. No importarlos indiscriminadamente a seoPages ni sitemap.",
+    "regionalPublicationGates": "Campos de revisión editorial humana que requieren evidencia, valor diferencial, un artefacto original, autorización de afirmaciones y revisión completa.",
+    "canPublishRegionalPage": "Devuelve true solo si todos los campos de revisión recibidos son true; no publica ni valida automáticamente la calidad."
+  },
+  "initial_publish_recommendation": {
+    "retain": ["/", "/pentesting-web", "/seguridad-api", "/white-label-ciberseguridad", "/bug-bounty-privado"],
+    "add_now": ["/argentina", "/mexico"],
+    "resource_priorities": [
+      "Matriz de alcance de pentesting web y API: herramienta que genere un resumen útil para cotizar, sin enviar datos sin autorización.",
+      "Plantilla pública de reglas para investigación privada: elegibilidad, severidades, duplicados y presupuesto máximo.",
+      "Informe de muestra que enseñe la diferencia entre evidencia, impacto y recomendaciones sin simular un cliente real.",
+      "Guía para agencias: responsabilidades en white label, quién autoriza y cómo presentar el entregable."
+    ],
+    "reason": "Los servicios y recursos resuelven decisiones reales de compra y pueden obtener enlaces por su utilidad. Los hubs explican cobertura internacional sin inventar oficinas."
+  },
+  "country_content_design": {
+    "argentina": {
+      "language": "es-AR",
+      "focus": "Integrar la evaluación a una entrega o propuesta de desarrollo y a una relación white label.",
+      "distinct_sections": ["Antes de entregar el proyecto", "Cuando el cliente pide un pentest", "Con la marca de tu agencia", "Después de la corrección"],
+      "operational_questions": ["Cómo incorporar un alcance a una propuesta existente", "Cómo trabajar sin un inventario completo de API", "Qué confirmar en moneda, vigencia y condiciones de cotización"]
+    },
+    "mexico": {
+      "language": "es-MX",
+      "focus": "Comparar propuestas, delimitar integraciones y coordinar la contratación y ejecución remota.",
+      "distinct_sections": ["Comparar cobertura", "Coordinar equipos e integraciones", "Aprobar presupuesto y calendario", "Convertir el informe en trabajo"],
+      "operational_questions": ["Qué comparar entre cotizaciones", "Cómo explicitar las zonas horarias de las ventanas", "Cómo acordar una fase con presupuesto máximo"]
+    }
+  },
+  "city_publication_gate": {
+    "localEvidenceVerified": "Un caso autorizado con relación local comprobable o investigación propia local útil, con fuente y metodología visibles. Un logo o la posibilidad de atender remotamente no bastan.",
+    "distinctBuyerValueReviewed": "La página resuelve una decisión del comprador mejor que el hub nacional y la página del servicio; cambiar la ciudad, sinónimos o anécdotas de contexto no basta.",
+    "originalArtifactReady": "Una matriz, ejemplo, análisis o recurso propio útil, pertinente a esa necesidad y completo dentro de la página o descargable.",
+    "claimsAuthorized": "Confirmación de permiso para cada nombre, intervención, resultado, testimonio o material de cliente que se publique.",
+    "editorialReviewComplete": "Lectura humana del documento completo, comprobación de fuente, enlaces, accesibilidad, CTA y ausencia de promesas sin fundamento."
+  },
+  "release_sequence": [
+    {"wave": 1, "work": "Publicar hubs nacionales, enlazarlos desde navegación y ajustar cobertura AR/MX en datos estructurados y contenido general."},
+    {"wave": 2, "work": "Publicar recursos originales que faciliten cotización y enlazado; medir consultas, impresiones y conversiones antes de priorizar más URLs."},
+    {"wave": 3, "work": "Investigar necesidad comprobable en Buenos Aires, Córdoba, Rosario, Ciudad de México, Guadalajara y Monterrey. La selección es una hipótesis inicial, no una medición de volumen."},
+    {"wave": 4, "work": "Publicar únicamente combinaciones con revisión completa; registrar fecha de publicación real e incluir en sitemap y enlaces de hubs."},
+    {"wave": 5, "work": "Expandir hacia otras ciudades según consultas y proyectos reales. Fusionar páginas sin valor diferencial; no forzar 200 URLs indexables como métrica de éxito."}
+  ],
+  "technical_rules": [
+    "Prerenderizar HTML útil de cada página publicada, con una URL canónica HTTPS y un H1 descriptivo.",
+    "No generar HTML ni sitemap para los 200 briefs mientras published sea false. Si una vista editorial se expone, debe ser noindex y quedar fuera del sitemap.",
+    "No asignar LocalBusiness, dirección, coordenadas ni openingHours a ciudades sin sede real.",
+    "Organization puede declarar países atendidos; Service puede delimitar el área remota correspondiente sin sugerir presencia física.",
+    "Usar es-AR y es-MX por página cuando corresponda. Hreflang solo entre versiones equivalentes y enlazadas recíprocamente; una ciudad no es una traducción de otra.",
+    "Conservar canonical en securiva.vercel.app mientras securiva.com no esté comprado y sirviendo el sitio. Después migrar con redirecciones y cambio coordinado de sitemap, perfiles y enlaces propios.",
+    "No introducir AggregateRating ni Review para textos generados o reseñas sin evidencia auténtica."
+  ],
+  "primary_sources": [
+    {"title":"Google: políticas de spam para búsqueda web", "url":"https://developers.google.com/search/docs/essentials/spam-policies", "checked_at":"2026-10-28", "supports":"La creación de páginas muy similares orientadas a regiones o ciudades puede constituir abuso de páginas de entrada; escalar contenido sin utilidad y enlaces manipulativos puede infringir las políticas."},
+    {"title":"Georef: referencia oficial de unidades territoriales de Argentina", "url":"https://www.argentina.gob.ar/georef", "checked_at":"2026-10-28", "supports":"Fuente oficial para normalizar y verificar nombres y códigos territoriales; no demuestra demanda comercial ni presencia de SECURIVA."},
+    {"title":"INEGI: catálogo único de áreas geoestadísticas y localidades", "url":"https://www.inegi.org.mx/app/ageeml/", "checked_at":"2026-10-28", "supports":"Fuente oficial para verificar nomenclatura geográfica mexicana; no demuestra demanda comercial ni presencia de SECURIVA."},
+    {"title":"OWASP Web Security Testing Guide", "url":"https://owasp.org/www-project-web-security-testing-guide/", "checked_at":"2026-10-28", "supports":"Referencia primaria para explicar áreas de evaluación web y construir material técnico propio."},
+    {"title":"OWASP API Security Project", "url":"https://owasp.org/www-project-api-security/", "checked_at":"2026-10-28", "supports":"Referencia primaria para explicar riesgos de APIs y diseñar matrices de alcance útiles."}
+  ]
+}

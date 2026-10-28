@@ -1,0 +1,241 @@
+{
+  "researchedAt": "2026-10-28",
+  "brand": "SECURIVA",
+  "markets": [
+    "Argentina",
+    "México"
+  ],
+  "methodology": {
+    "source": "Búsquedas web con consultas en español y revisión de fuentes primarias devueltas por el buscador de esta sesión.",
+    "importantLimit": "No es un seguimiento de posiciones Google geolocalizado ni un muestreo exhaustivo. No se dispone de volúmenes de búsqueda, Search Console, CPC, dificultad o posiciones de SECURIVA. El orden de URLs aquí no significa ranking. Los resultados varían por motor, fecha, ubicación e idioma.",
+    "competitorClaims": "Se registra qué anuncia cada proveedor, sin verificar que cumpla tales promesas. No copiar sus textos ni repetir afirmaciones legales como asesoramiento.",
+    "priorityLogic": "P0: white label para agencias, objetivo comercial ya definido. P1: servicios específicos con recursos de comparación. P2: contenido bounty que separa comprador de investigador."
+  },
+  "targetIntents": [
+    {
+      "id": "mx-pentesting",
+      "query": "pentesting México empresas",
+      "market": "MX",
+      "intent": "Contratar proveedor",
+      "priority": "P1",
+      "observedSources": [
+        "https://www.pentesting.com.mx/",
+        "https://tlscybersecurity.com/",
+        "https://syscore.mx/pentest-mexico/"
+      ],
+      "observation": "La muestra devolvió proveedores con páginas comerciales específicas, alcance y metodología; no basta una portada genérica.",
+      "proposedPage": "/mexico",
+      "nextContent": "Explicar activos, autorización, entregables, responsable técnico y coordinación remota. Separar pentesting de escaneo.",
+      "commercialGapHypothesis": "Facilitar comparación por alcance y evidencia con un brief descargable.",
+      "evidenceType": "Páginas comerciales de los propios proveedores; sus afirmaciones no se auditaron."
+    },
+    {
+      "id": "mx-audit",
+      "query": "auditoría vulnerabilidades web México empresas -filetype:pdf -site:reddit.com",
+      "market": "MX",
+      "intent": "Entender y cotizar evaluación",
+      "priority": "P1",
+      "observedSources": [
+        "https://ameci.org/servicios-seguridad/servicio-pentesting/pentesting-web-y-aplicaciones",
+        "https://dexma.mx/servicios/ciberseguridad"
+      ],
+      "observation": "Aparecen páginas que explican proceso y hallazgos de aplicaciones. La palabra auditoría sola también mezcla temas financieros y públicos en búsquedas amplias.",
+      "proposedPage": "/pentesting-web",
+      "nextContent": "Precisar auditoría técnica de vulnerabilidades, diferencias entre revisión automatizada y validación manual, ejemplo de entregable.",
+      "commercialGapHypothesis": "Contenido claro para gerente de agencia sin perder detalle útil para desarrolladores.",
+      "evidenceType": "Páginas de entidades y proveedores que ofrecen su propio servicio."
+    },
+    {
+      "id": "ar-pentesting",
+      "query": "pentesting Argentina empresas -filetype:pdf -site:reddit.com",
+      "market": "AR",
+      "intent": "Contratar proveedor",
+      "priority": "P1",
+      "observedSources": [
+        "https://www.whitejaguars.com/argentina-pruebas-penetracion/",
+        "https://emmanuelap.github.io/zyntraia/pentesting/",
+        "https://www.oktsec.com/pentesting"
+      ],
+      "observation": "La muestra incluye proveedores regionales y firmas con base argentina; algunos explicitan remoto y autorización escrita.",
+      "proposedPage": "/argentina",
+      "nextContent": "Proceso comercial con voseo, coordinación horaria y contratación remota, información propia de alcance. No inventar una oficina.",
+      "commercialGapHypothesis": "Ruta específica para agencias de software que necesitan revender una prueba delimitada.",
+      "evidenceType": "Comunicaciones comerciales primarias del proveedor, sin validar resultados ni credenciales."
+    },
+    {
+      "id": "mx-api",
+      "query": "pentesting API México empresas -site:reddit.com -filetype:pdf",
+      "market": "MX",
+      "intent": "Contratar prueba de APIs",
+      "priority": "P1",
+      "observedSources": [
+        "https://tlscybersecurity.com/servicios/pentesting-api/",
+        "https://almstra.com/servicios/pentesting",
+        "https://www.cryptos.com.mx/"
+      ],
+      "observation": "Hay competencia con páginas especializadas REST/GraphQL, autorización y autenticación; listados genéricos no sustituyen una explicación de alcance.",
+      "proposedPage": "/seguridad-api",
+      "nextContent": "Roles, tenants, endpoints, autorización de objetos/funciones y requisitos OpenAPI con checklist reutilizable.",
+      "commercialGapHypothesis": "Mostrar qué aportar para que una API realmente pueda evaluarse y compararse en una cotización.",
+      "evidenceType": "Sitios propios de proveedores observados en búsqueda."
+    },
+    {
+      "id": "ar-api",
+      "query": "pentesting API Argentina -filetype:pdf -site:reddit.com",
+      "market": "AR",
+      "intent": "Contratar prueba técnica",
+      "priority": "P1",
+      "observedSources": [
+        "https://defensait.com/pentesting-apis"
+      ],
+      "observation": "Se devolvió una landing dedicada REST/GraphQL/SOAP, con categorías API y entrega remota para Latinoamérica.",
+      "proposedPage": "/seguridad-api",
+      "nextContent": "Caso didáctico propio multiusuario, criterios de evidencia, límites de prueba y retest. Enlazar a país sin duplicar toda la página.",
+      "commercialGapHypothesis": "Combinar checklist para producto y brief de permisos para la agencia.",
+      "evidenceType": "Página comercial primaria de DEFENSA IT, no evaluación independiente."
+    },
+    {
+      "id": "mx-white-label",
+      "query": "ciberseguridad white label agencias México Argentina -filetype:pdf",
+      "market": "MX",
+      "intent": "Buscar partner de entrega",
+      "priority": "P0",
+      "observedSources": [
+        "https://meerida.com/",
+        "https://meerida.com/en/aliados/"
+      ],
+      "observation": "Existe oferta explícita de marca blanca con relación comercial protegida y entregables bajo la identidad del partner.",
+      "proposedPage": "/white-label-ciberseguridad",
+      "nextContent": "Precisar quién vende, quién firma permiso, quién prueba, quién entrega y cómo se gestiona corrección, confidencialidad y contacto.",
+      "commercialGapHypothesis": "Propuesta inicial delimitada, informe de muestra y formulario de alcance para agencias pequeñas.",
+      "evidenceType": "Oferta propia de Meerida, no respaldo de sus afirmaciones."
+    },
+    {
+      "id": "ar-white-label",
+      "query": "pentesting white label agencias Argentina -filetype:pdf",
+      "market": "AR",
+      "intent": "Buscar soporte técnico para revender",
+      "priority": "P0",
+      "observedSources": [
+        "https://mmartin.me/es/partner-tecnico",
+        "https://www.buuum.com.ar/servicios/white-label/",
+        "https://www.oceanit.io/es/agencia-white-label-argentina/"
+      ],
+      "observation": "La muestra mezcla pentesting en marca blanca y desarrollo white label. Conviene mantener seguridad/pentesting explícitos para filtrar intención.",
+      "proposedPage": "/white-label-ciberseguridad",
+      "nextContent": "Informe técnico de muestra, pasos comerciales y condiciones de alcance; lenguaje de agencia argentina.",
+      "commercialGapHypothesis": "Que el visitante entienda margen y operación sin promesas de resultados técnicos garantizados.",
+      "evidenceType": "Páginas de empresas que describen su propia oferta; las de desarrollo no son competidores técnicos equivalentes."
+    },
+    {
+      "id": "mx-bounty",
+      "query": "\"bug bounty privado\" México servicios -site:reddit.com -filetype:pdf",
+      "market": "MX",
+      "intent": "Investigar modelo de contratación",
+      "priority": "P2",
+      "observedSources": [
+        "https://conteudo.bughunt.com.br/lp-fale-conosco",
+        "https://venice.ai/es/bug-bounty"
+      ],
+      "observation": "La consulta estricta devolvió material regional y programas publicados por titulares de producto; esta muestra no acredita demanda comercial ni ausencia de proveedores mexicanos.",
+      "proposedPage": "/bug-bounty-privado",
+      "nextContent": "Diferenciar contratar un programa de participar como hunter; base de operación, severidad, deduplicación, presupuesto y elegibilidad.",
+      "commercialGapHypothesis": "Claridad de reglas y presupuesto para comprador de agencia.",
+      "evidenceType": "Fuentes de plataformas y programas primarios; no se toman pagos o claims como benchmarks."
+    },
+    {
+      "id": "ar-bounty",
+      "query": "\"bug bounty\" Argentina empresas programa privado -site:reddit.com -filetype:pdf",
+      "market": "AR",
+      "intent": "Evaluar investigación continua",
+      "priority": "P2",
+      "observedSources": [
+        "https://www.yeswehack.com/customer-stories/instant-banco-galicia-vulnerability-remediation",
+        "https://ar.linkedin.com/company/bugbountyargentina",
+        "https://developers.mercadolibre.com.ar/en_us/security-researchers"
+      ],
+      "observation": "La muestra devolvió caso de proveedor, comunidad y canal oficial de security researchers. Mezcla compra empresarial, comunidad y divulgación de fallos.",
+      "proposedPage": "/bug-bounty-privado",
+      "nextContent": "FAQ comprador vs investigador y distinción programa privado, VDP y pentest cerrado. Publicar evidencia de SECURIVA solo si documentada.",
+      "commercialGapHypothesis": "Explicar cuándo una agencia aún necesita primero pentesting con alcance fijo.",
+      "evidenceType": "Primarias: plataforma que participa del caso, página de comunidad y documentación del titular del programa. No trasladar resultados ajenos a SECURIVA."
+    },
+    {
+      "id": "mx-price",
+      "query": "pentesting precio México",
+      "market": "MX",
+      "intent": "Comparar costo y alcance",
+      "priority": "P1",
+      "observedSources": [
+        "https://www.genghis.com.mx/blog/costo-pentest-mexico",
+        "https://zettatek.com/cuanto-cuesta-pentesting-mexico/",
+        "https://axioma-ia.com/precios/"
+      ],
+      "observation": "Aparecen guías y precios publicados con alcances diferentes y rangos muy dispares. No constituyen promedio de mercado comparable.",
+      "proposedPage": "/recursos/como-definir-alcance-pentesting",
+      "nextContent": "Calculador de variables de alcance y plantilla de solicitud sin inventar cotización final; tarifa solo tras aprobación comercial.",
+      "commercialGapHypothesis": "Transparencia de lo incluido y excluido reduce consultas no calificadas y comparación de escaneo con pentest.",
+      "evidenceType": "Precios y guías comerciales publicados por los propios proveedores, no transacciones verificadas."
+    }
+  ],
+  "geoEvidence": [
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "finding": "Aplicar fundamentos de búsqueda: contenido útil, accesible y verificable. No existe una compra de posición IA ni una garantía de mención."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "finding": "La elegibilidad para enlaces de apoyo en funciones IA requiere indexación y posibilidad de mostrar snippet; no hay markup especial obligatorio para IA."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/bots",
+      "finding": "Distinguir OAI-SearchBot (búsqueda), GPTBot (entrenamiento) y ChatGPT-User (visitas iniciadas por usuario). Permitir búsqueda no asegura citas."
+    },
+    {
+      "url": "https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/",
+      "finding": "AI Performance aporta información sobre citas y URLs de una propiedad; el anuncio de febrero no equivale a garantía de visibilidad."
+    },
+    {
+      "url": "https://blogs.bing.com/search/2026/6/New-AI-Visibility-Insights-in-Bing-Webmaster-Tools-Intents-Topics-Citation-Share-Compare/",
+      "finding": "La ampliación de junio agrega Intents, Topics, Citation Share y Compare en preview. Confirmar disponibilidad en cuenta y suficiente información."
+    },
+    {
+      "url": "https://blogs.bing.com/webmaster/2026/10/introducing-topics-portfolio-beta-in-ai-performance/",
+      "finding": "Topics Portfolio Beta (13/10/2026) usa temas y consultas de la presencia real de cada sitio. Con poco dato puede no mostrarse; las cifras sirven de orientación, no de registro preciso."
+    }
+  ],
+  "contentDecisions": [
+    "Mantener un servicio canónico por intención y dos hubs de país con información de operación genuina.",
+    "Planificar las ciudades solo cuando exista utilidad independiente: experiencia local documentada, preguntas reales o recurso/entregable distinto; nombres de ciudad sustituidos no bastan.",
+    "Construir recursos citables originales: brief de alcance, checklist white label y reglas de presupuesto bounty.",
+    "Mostrar responsable, actualización, fuentes, criterios y límites; convertir experiencia propia documentada en evidencia.",
+    "Medir impresiones/clics por país, páginas que convierten, consultas cualificadas y citas IA disponibles. No equiparar click WhatsApp con lead recibido.",
+    "Revisar datos reales antes de ampliar indexación; no afirmar top1 ni fabricar testimonios con estrellas."
+  ],
+  "primaryPolicies": [
+    {
+      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "topics": [
+        "link spam",
+        "doorway abuse",
+        "scaled content abuse"
+      ],
+      "application": "Enlaces editoriales y perfiles auténticos; nada de granjas, intercambios en masa o páginas puerta de ciudades."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/essentials",
+      "topics": [
+        "eligibility",
+        "people-first"
+      ],
+      "application": "Ni siquiera cumplir todos los requisitos garantiza que Google rastree, indexe o muestre un sitio."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
+      "topics": [
+        "AI content"
+      ],
+      "application": "El valor original al usuario determina la calidad de la producción; multiplicar páginas con IA sin utilidad puede infringir políticas."
+    }
+  ]
+}

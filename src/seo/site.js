@@ -1,11 +1,11 @@
-import { seoPages } from '../data/seoPages.js'
+import { seoPages } from '../data/pageRegistry.js'
 
 export const DEFAULT_SITE_URL = 'https://securiva.vercel.app'
 
 export const siteIdentity = Object.freeze({
   name: 'SECURIVA',
-  language: 'es-MX',
-  description: 'Auditorías de vulnerabilidades, pentesting y ciberseguridad white label para agencias, empresas y SaaS en México.',
+  language: 'es',
+  description: 'Auditorías de vulnerabilidades, pentesting y ciberseguridad white label para agencias, empresas y SaaS de Argentina y México. Evaluación remota en español.',
   email: 'dessenaluca53@gmail.com',
   telephone: '+541126547874',
   logo: '/brand/securiva-mark.svg',
@@ -54,7 +54,9 @@ export function getStructuredData(page) {
   const websiteId = `${page.origin}/#website`
   const webpageId = `${page.canonical}#webpage`
   const serviceId = `${page.canonical}#service`
-  const isService = page.path !== '/'
+  const isService = ['pentest', 'api', 'label', 'bounty'].includes(page.kind)
+  const isArticle = page.kind === 'resource'
+  const areaServed = page.country ? { '@type':'Country', name:page.country } : [{ '@type':'Country', name:'Argentina' }, { '@type':'Country', name:'México' }]
   const graph = [
     {
       '@type': 'Organization',
@@ -65,7 +67,8 @@ export function getStructuredData(page) {
       email: siteIdentity.email,
       telephone: siteIdentity.telephone,
       logo: { '@type': 'ImageObject', url: `${page.origin}${siteIdentity.logo}` },
-      areaServed: { '@type': 'Country', name: 'México' },
+      areaServed: [{ '@type':'Country', name:'Argentina' }, { '@type':'Country', name:'México' }],
+      sameAs: ['https://github.com/LucaFront-End/securiva'],
     },
     {
       '@type': 'WebSite',
@@ -81,10 +84,10 @@ export function getStructuredData(page) {
       url: page.canonical,
       name: page.title,
       description: page.description,
-      inLanguage: siteIdentity.language,
+      inLanguage: page.language || siteIdentity.language,
       isPartOf: { '@id': websiteId },
       about: { '@id': organizationId },
-      mainEntity: { '@id': isService ? serviceId : organizationId },
+      mainEntity: { '@id': isService ? serviceId : isArticle ? `${page.canonical}#article` : organizationId },
     },
   ]
   if (isService) {
@@ -96,10 +99,21 @@ export function getStructuredData(page) {
       description: page.description,
       url: page.canonical,
       provider: { '@id': organizationId },
-      areaServed: { '@type': 'Country', name: 'México' },
+      areaServed,
       mainEntityOfPage: { '@id': webpageId },
     })
   }
+  if (isArticle) graph.push({
+    '@type':'Article', '@id':`${page.canonical}#article`, headline:page.title,
+    description:page.description, inLanguage:page.language || 'es',
+    author:{'@type':'Person',name:'Luca Dessena Maffucci'},
+    publisher:{'@id':organizationId}, mainEntityOfPage:{'@id':webpageId},
+    datePublished:'2026-10-28', dateModified:'2026-10-28',
+  })
+  if (page.path !== '/') graph.push({
+    '@type':'BreadcrumbList', '@id':`${page.canonical}#breadcrumb`,
+    itemListElement:[{'@type':'ListItem',position:1,name:'SECURIVA',item:`${page.origin}/`},{'@type':'ListItem',position:2,name:page.title.split(' | ')[0],item:page.canonical}],
+  })
   return { '@context': 'https://schema.org', '@graph': graph }
 }
 
@@ -117,7 +131,7 @@ export function renderSeoHead(page) {
     `<link rel="canonical" href="${esc(page.canonical)}" />`,
     `<meta property="og:type" content="website" />`,
     `<meta property="og:site_name" content="${esc(siteIdentity.name)}" />`,
-    `<meta property="og:locale" content="es_MX" />`,
+    `<meta property="og:locale" content="${page.language === 'es-AR' ? 'es_AR' : 'es_MX'}" />`,
     `<meta property="og:title" content="${esc(page.title)}" />`,
     `<meta property="og:description" content="${esc(page.description)}" />`,
     `<meta property="og:url" content="${esc(page.canonical)}" />`,

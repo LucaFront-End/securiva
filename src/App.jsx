@@ -12,6 +12,9 @@ import ClientVoices from './components/ClientVoices'
 import ServiceDirectory from './components/ServiceDirectory'
 import ServiceLanding, { NotFoundPage } from './components/ServiceLanding'
 import { servicePages } from './data/seoPages'
+import { regionalHubs } from './data/regionalSeo'
+import { publishedResourcePages } from './data/pageRegistry'
+import ResourceLanding from './components/ResourceLanding'
 import { observeContactLinks, trackEvent } from './lib/analytics'
 import useEditorialMotion from './hooks/useEditorialMotion'
 import { CONTACT_EMAIL, CONTACT_WHATSAPP } from './config'
@@ -38,10 +41,10 @@ function HomePage() {
     </header>
     <main id="contenido">
       <section id="inicio" className="cover">
-        <div className="cover-kicker mono"><span>AUDITORÍAS DE VULNERABILIDADES Y PENTESTING</span><span>MÉXICO + LATINOAMÉRICA</span></div>
+        <div className="cover-kicker mono"><span>AUDITORÍAS DE VULNERABILIDADES Y PENTESTING</span><span>ARGENTINA + MÉXICO</span></div>
         <h1 className="cover-title"><span className="title-first">Lo invisible,</span><span className="title-last">a la vista<span className="blue-period">.</span></span></h1>
         <div className="cover-art"><Suspense fallback={<img className="art-fallback" src="/art/liquid-sculpture.webp" alt=""/>}><LiquidArt motionEnabled={motionEnabled}/></Suspense></div>
-        <div className="cover-bottom"><a href="#riesgo" className="explore-link"><span className="circle-arrow"><ArrowDown size={23}/></span><span>Mira cómo<br/>lo investigamos.</span></a><p>Auditorías de vulnerabilidades y pentesting en México.<br className="desktop-break"/> Seguridad para empresas, SaaS y agencias con tu marca.</p></div>
+        <div className="cover-bottom"><a href="#riesgo" className="explore-link"><span className="circle-arrow"><ArrowDown size={23}/></span><span>Mira cómo<br/>lo investigamos.</span></a><p>Auditorías de vulnerabilidades y pentesting en Argentina y México.<br className="desktop-break"/> Seguridad para empresas, SaaS y agencias con tu marca.</p></div>
         <span className="cover-edge mono">REAL SECURITY. REAL IMPACT.</span>
       </section>
       <TrustStrip motionEnabled={motionEnabled}/>
@@ -63,6 +66,9 @@ export default function App({ path = '/' }) {
   useEffect(() => observeContactLinks(), [])
   const pathname = path === '/' ? '/' : '/' + path.replace(/^\/+|\/+$/g, '')
   if (pathname === '/') return <HomePage/>
-  const page = servicePages.find(service => service.path === pathname)
+  const resource = publishedResourcePages.find(page => page.path === pathname)
+  if (resource) return <ResourceLanding page={resource}/>
+  const page = [...servicePages, ...regionalHubs].find(service => service.path === pathname)
   return page ? <ServiceLanding page={page}/> : <NotFoundPage/>
 }
+

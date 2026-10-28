@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "test": "node --test tests/security-choreography.test.mjs tests/process-choreography.test.mjs tests/service-choreography.test.mjs tests/seo.test.mjs",
+    "test": "node --test tests/security-choreography.test.mjs tests/process-choreography.test.mjs tests/service-choreography.test.mjs tests/seo.test.mjs tests/regional-seo.test.mjs",
     "build": "vite build && node scripts/prerender.mjs",
     "check:seo": "node scripts/check-seo.mjs",
+    "export:seo-plan": "node scripts/export-seo-plan.mjs",
     "preview": "vite preview --host 127.0.0.1"
   },
   "dependencies": {

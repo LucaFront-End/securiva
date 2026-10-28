@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { seoPages } from '../src/data/seoPages.js'
+import { seoPages } from '../src/data/pageRegistry.js'
 import { DEFAULT_SITE_URL, getPageMetadata, getStructuredData, isIndexableBuild, normalizePagePath, renderRobots, renderSeoHead, renderSitemap, resolveSiteUrl } from '../src/seo/site.js'
 
 test('the public origin defaults to the live site and accepts an explicit domain migration', () => {
@@ -55,7 +55,7 @@ test('schema describes the real organization and services without invented socia
     assert.equal(organization.url, `${DEFAULT_SITE_URL}/`)
     assert.equal(organization.name, 'SECURIVA')
     assert.equal(organization.email, 'dessenaluca53@gmail.com')
-    assert.equal(graph.some(item => item['@type'] === 'Service'), page.path !== '/')
+    assert.equal(graph.some(item => item['@type'] === 'Service'), ['pentest','api','label','bounty'].includes(page.kind))
     for (const item of graph) {
       assert.ok(!['Review', 'AggregateRating', 'LocalBusiness'].includes(item['@type']))
       assert.ok(!item.address && !item.geo && !item.aggregateRating && !item.review && !item.hasCredential)
@@ -77,7 +77,7 @@ test('metadata is escaped and structured data cannot terminate its script elemen
   assert.equal(JSON.parse(serialized)['@graph'].find(item => item['@type'] === 'WebPage').description, metadata.description)
 })
 
-test('sitemap contains only the five real pages and migrates consistently with the configured origin', () => {
+test('sitemap contains only the published pages and migrates consistently with the configured origin', () => {
   const sitemap = renderSitemap()
   assert.equal((sitemap.match(/<loc>/g) || []).length, seoPages.length)
   for (const page of seoPages) assert.ok(sitemap.includes(`<loc>${DEFAULT_SITE_URL}${page.path}</loc>`))
@@ -88,3 +88,16 @@ test('sitemap contains only the five real pages and migrates consistently with t
   assert.ok(!migrated.includes(DEFAULT_SITE_URL))
   assert.ok(renderRobots().includes(`Sitemap: ${DEFAULT_SITE_URL}/sitemap.xml`))
 })
+
+test('country pages use their actual service coverage and resources are articles, not services', () => {
+  for (const [path, country, language] of [['/argentina','Argentina','es-AR'],['/mexico','México','es-MX']]) {
+    const graph = getStructuredData(getPageMetadata(path))['@graph']
+    assert.equal(graph.find(item => item['@type'] === 'Service').areaServed.name,country)
+    assert.equal(graph.find(item => item['@type'] === 'WebPage').inLanguage,language)
+    assert.deepEqual(graph.find(item => item['@type'] === 'Organization').areaServed.map(item => item.name),['Argentina','México'])
+  }
+  const graph = getStructuredData(getPageMetadata('/recursos/checklist-pentesting-white-label'))['@graph']
+  assert.ok(graph.some(item => item['@type'] === 'Article'))
+  assert.ok(!graph.some(item => item['@type'] === 'Service'))
+})
+

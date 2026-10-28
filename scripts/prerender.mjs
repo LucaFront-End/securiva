@@ -2,7 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { build } from 'esbuild'
-import { seoPages } from '../src/data/seoPages.js'
+import { seoPages } from '../src/data/pageRegistry.js'
 import { getPageMetadata, isIndexableBuild, renderRobots, renderSeoHead, renderSitemap, siteIdentity } from '../src/seo/site.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -38,7 +38,7 @@ for (const page of seoPages) {
   const metadata = getPageMetadata(page.path, process.env)
   const body = await render(page.path)
   if (!body || !/<h1[\s>]/.test(body)) throw new Error(`Prerender incompleto en ${page.path}.`)
-  const html = template.replace(headMarker, renderSeoHead(metadata)).replace('<!--app-html-->', body)
+  const html = template.replace(/<html lang="[^"]+">/, `<html lang="${metadata.language || 'es'}">`).replace(headMarker, renderSeoHead(metadata)).replace('<!--app-html-->', body)
   const destination = page.path === '/' ? path.join(output, 'index.html') : path.join(output, `${page.path.slice(1)}.html`)
   await fs.mkdir(path.dirname(destination), { recursive: true })
   await fs.writeFile(destination, html, 'utf8')

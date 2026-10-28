@@ -1,5 +1,13 @@
 # SECURIVA
 
+Auditorías de vulnerabilidades, pentesting web y API y ciberseguridad white label para agencias, empresas y SaaS de Argentina y México. Evaluaciones remotas en español, alcance autorizado e informes con evidencia reproducible.
+
+- [Conocer SECURIVA](https://securiva.vercel.app/)
+- [Preparar el alcance de un pentest — herramienta gratuita](https://securiva.vercel.app/preparar-pentest)
+- [Checklist de pentesting white label para agencias](https://securiva.vercel.app/recursos/checklist-pentesting-white-label)
+- [Cómo estructurar el presupuesto de investigación privada](https://securiva.vercel.app/recursos/presupuesto-bug-bounty-privado)
+- [Servicios en Argentina](https://securiva.vercel.app/argentina) · [Servicios en México](https://securiva.vercel.app/mexico)
+
 Web de SECURIVA en React + Vite, con HTML estático para buscadores e hidratación para las interacciones. Dirección editorial: «Lo invisible, a la vista». El origen de producción actual es https://securiva.vercel.app.
 
 ## Ejecutar
@@ -75,7 +83,7 @@ Los certificados pertenecen a Luca Dessena Maffucci. Se presentan las fechas de 
 
 ## SEO, GEO y publicación en Vercel
 
-npm run build ejecuta Vite y scripts/prerender.mjs. Se generan HTML completos y metadatos específicos para /, /pentesting-web, /seguridad-api, /white-label-ciberseguridad y /bug-bounty-privado. Los enlaces son anchors normales; hydrateRoot conserva el HTML al activar las interacciones.
+npm run build ejecuta Vite y scripts/prerender.mjs. Se generan 11 páginas HTML completas: inicio, cuatro servicios, cobertura en /argentina y /mexico, /recursos, /preparar-pentest y dos guías. src/data/pageRegistry.js es la lista única de páginas publicadas. Los enlaces son anchors normales; hydrateRoot conserva el HTML al activar las interacciones.
 
 Producción usa canonical en https://securiva.vercel.app, sitemap, robots, Open Graph con PNG de 1200×630 y datos estructurados Organization/WebSite/WebPage/Service. No se generan estrellas, reseñas estructuradas ni direcciones físicas. vercel.json configura URLs limpias sin un rewrite global que convierta rutas inexistentes en la home.
 
@@ -83,7 +91,7 @@ Variables de build: SEO_SITE_URL (o SITE_URL) cambia el origen HTTPS. VERCEL_ENV
 
 Para migrar al .com: conectar y verificar el dominio en Vercel, emitir HTTPS, actualizar SEO_SITE_URL, desplegar, redirigir permanentemente cada URL anterior a su equivalente, actualizar sitemap/enlaces y verificar las propiedades en Search Console y Bing. No redirigir todas las páginas a la home.
 
-La estrategia de 90 días cubre contenido por intención, evidencia profesional, guías originales, medición y expansión local con información propia. No se generaron páginas duplicadas por ciudad. Falta conectar las cuentas de Search Console/Bing y una herramienta de analítica, enviar el sitemap y completar las acciones externas de autoridad.
+La estrategia de 90 días cubre contenido por intención, evidencia profesional, guías originales, medición y expansión local con información propia. Las 200 rutas de ciudad y servicio son briefs sin publicar ni indexar; npm run export:seo-plan exporta el mapa completo a comercial/seo. Los controles editoriales exigen evidencia y utilidad local antes de publicar. Las etiquetas de propiedad de Google y Bing están en index.html; la verificación y envío del sitemap se completan en las consolas. La analítica comercial sigue pendiente de una cuenta conectada. El plan operativo y las oportunidades de enlaces están en docs/seo-market-plan.md.
 
 src/lib/analytics.js emite eventos en dataLayer y securiva:analytics: contact_dialog_open, brief_prepared, contact_whatsapp_open y contact_email_open. No instala GA4/GTM, no envía datos externos por sí mismo y no registra el contenido del formulario. Abrir WhatsApp o correo no confirma que una consulta haya sido recibida; ese resultado se registra en el proceso comercial.
 
@@ -96,3 +104,4 @@ Para GEO, revisar la inclusión en funciones generativas y su reporte en Search 
 `node --test tests/service-choreography.test.mjs`: cinco pruebas adicionales para movimiento sin scroll, continuidad del ciclo y su velocidad, orden de validación del hallazgo, separación de las cubiertas y límites de la geometría real. Las fichas se revisaron a 1200×850 y 390×844: solo la visible mantiene su reloj; todas se pausan al salir de servicios. Las tres escenas usan entre 26 y 36 meshes cada una y comparten el código de Three.js en un único chunk diferido.
 
 `npm run build` correcto. Revisión visual del avance y retroceso con scroll, botones de salto, proceso 3D fijo, reveal white label y control manual, apertura de certificados y CTA contextual de contacto. Sin desbordamiento horizontal ni errores de consola observados. El envío de mensajes no se ejecutó durante las pruebas. Vite avisa del tamaño del chunk 3D, que se descarga de forma diferida al acercarse a la escena.
+

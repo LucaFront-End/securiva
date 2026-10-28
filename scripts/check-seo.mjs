@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { seoPages } from '../src/data/seoPages.js'
+import { seoPages } from '../src/data/pageRegistry.js'
 import { getPageMetadata, isIndexableBuild } from '../src/seo/site.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -24,7 +24,7 @@ for (const page of seoPages) {
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])
   assert.equal(schema['@context'], 'https://schema.org')
   assert.ok(!schema['@graph'].some(item => ['Review', 'AggregateRating'].includes(item['@type']) || item.address || item.geo))
-  assert.equal(schema['@graph'].some(item => item['@type'] === 'Service'), page.path !== '/')
+  assert.equal(schema['@graph'].some(item => item['@type'] === 'Service'), ['pentest','api','label','bounty'].includes(page.kind))
 }
 assert.equal(headings.size, seoPages.length, 'Cada página debe tener su propio H1')
 const robots = await fs.readFile(path.join(output, 'robots.txt'), 'utf8')
