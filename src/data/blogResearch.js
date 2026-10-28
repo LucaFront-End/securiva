@@ -539,7 +539,7 @@ export const researchBlogPosts = [
       }
     ],
     "relatedPaths": [
-      "/seguridad-api",
+      "/pentesting-saas",
       "/preparar-pentest",
       "/blog/plan-30-dias-despues-pentest"
     ]

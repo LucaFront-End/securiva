@@ -6,7 +6,7 @@ El objetivo comercial es conseguir consultas de agencias y empresas que puedan c
 
 ## Estado de la implementación
 
-**Ejecución verificada el 28/10/2026:** hay 29 páginas publicadas y comprobadas en producción, incluidas 16 entradas de blog. Google Search Console y Bing Webmaster Tools están verificados con etiquetas HTML. Google aceptó el sitemap y muestra 29 URLs descubiertas; Bing recibió la ampliación y la procesa. IndexNow recibió las 29 URLs con HTTP 200. Esto no confirma indexación ni posiciones. El registro detallado está en [execution-2026-10-28.json](seo/execution-2026-10-28.json).
+**Segunda iteración verificada el 28/10/2026:** hay 32 páginas publicadas y comprobadas en producción, incluidas 16 entradas de blog, dos servicios sectoriales nuevos y un informe de muestra público. El sitemap contiene 32 URLs e IndexNow recibió las 32 con HTTP 200. Las propiedades de Google Search Console y Bing Webmaster Tools continúan verificadas. El último recuento observado en la interfaz de Google era de 29 URLs descubiertas; todavía procesa los datos de indexación. Recibir un sitemap o una notificación no confirma indexación ni posiciones. El registro actual está en [execution-2026-10-28-iteration-2.json](seo/execution-2026-10-28-iteration-2.json); el [registro anterior](seo/execution-2026-10-28.json) conserva la primera verificación.
 
 Se publicaron seis destinos contextuales nuevos desde el README de GitHub, verificados con `rel=nofollow`, y se actualizó la descripción del repositorio. El dominio de referencia ya existía: no se cuenta como un dominio nuevo. La ficha de pentest.fyi quedó preparada y sin enviar porque requiere correo corporativo; el usuario confirmó que no dispone de él.
 
@@ -32,11 +32,21 @@ La atención remota no acredita oficinas en las ciudades. No publicar direccione
 
 ## Blog publicado y prácticas aplicadas
 
-Se añadieron /blog, 16 artículos y /sobre-securiva. El total actual es 29 URLs. Los artículos cubren decisiones concretas de alcance, APIs, venta para agencias, evidencia, retest, presupuesto y gestión; no son variantes de ciudades. Cada entrada tiene fuentes primarias, ejemplos hipotéticos identificados, artículos relacionados, CTA y una imagen social propia. BlogPosting referencia al responsable y su presentación pública.
+Se añadieron /blog, 16 artículos y /sobre-securiva; la segunda iteración amplía el total a 32 URLs con /pentesting-ecommerce, /pentesting-saas e /informe-pentest-ejemplo. Los artículos cubren decisiones concretas de alcance, APIs, venta para agencias, evidencia, retest, presupuesto y gestión; no son variantes de ciudades. Cada entrada tiene fuentes primarias, ejemplos hipotéticos identificados, artículos relacionados, CTA y una imagen social propia. BlogPosting referencia al responsable y su presentación pública.
 
 El índice permite filtrar por tema y buscar con o sin tildes. Las 16 entradas y sus enlaces existen en HTML antes de ejecutar JavaScript. La carga del contenido se separa de la landing; no se añaden todos los artículos al JavaScript inicial de la portada.
 
-Se revisaron las guías oficiales y las rutas de aprendizaje anunciadas por Google el 6/10/2026. La lista de comprobación está en [google-practices.json](seo/google-practices.json). No se afirma que se haya completado un curso de vídeo ni obtenido una certificación. Validación: 28 pruebas, build, enlaces internos, 29 HTML públicos, metadatos, imágenes 1200×630 y móvil 390/320px.
+Se revisaron las guías oficiales y las rutas de aprendizaje anunciadas por Google el 6/10/2026. La lista de comprobación está en [google-practices.json](seo/google-practices.json). No se afirma que se haya completado un curso de vídeo ni obtenido una certificación. Validación actual: 40 pruebas, build, enlaces internos, 32 HTML públicos, metadatos, imágenes 1200×630 y móvil 390/320px.
+
+## Segunda iteración: intención comercial, rendimiento y descubrimiento
+
+Las dos nuevas páginas de servicio describen alcance, insumos, entregables y preguntas específicas de e-commerce y SaaS. Los artículos pertinentes enlazan al servicio correspondiente; los servicios recomiendan lecturas concretas y la muestra. El informe es un ejemplo expresamente ficticio de autorización por objeto: incluye resumen ejecutivo, evidencia sintética, recomendaciones y siete casos de retest por ejecutar. No publica información de clientes ni resultados atribuidos a una auditoría real. Su versión de texto se descarga desde una URL propia.
+
+La portada, los servicios y los recursos usan entradas JavaScript separadas. El prerender publica por ruta sus estilos y precargas desde el manifiesto de Vite; las escenas 3D siguen diferidas. Frente al build anterior, el archivo JavaScript inicial pasó de 465.730 a 227.872 bytes y el conjunto de JavaScript de la ruta de conocimiento pasó de 614.780 a aproximadamente 450.000 bytes. Son tamaños de archivos compilados, no una medición de Core Web Vitals. PageSpeed Insights devolvió HTTP 429 en los dos intentos de esta revisión y no se obtuvo puntuación de Lighthouse.
+
+El blog dispone de RSS en /feed.xml y un índice público de contenido en /content-index.json. Ambos incluyen únicamente las 16 entradas publicadas. Las fechas de publicación y actualización son independientes y explícitas; el sitemap no inventa fechas usando la hora del build. El feed y el índice facilitan reutilización y descubrimiento, sin prometer posicionamiento o citas en IA.
+
+En la interfaz de Search Console se observó el control de funciones generativas heredado en **Incluir**; ya estaba así y no se modificó. El informe de indexación seguía procesando datos. Bing AI Performance Beta mostró **No data available**: no permite concluir cuántas citas existen fuera de ese informe. No se aplicaron cambios a la cuenta ni se inició un rastreo desde esos controles. La reconexión posterior de Chrome falló y no se afirma haber reenviado el sitemap desde la interfaz en esta segunda iteración; el mismo sitemap publicado ya contiene las 32 rutas.
 
 ## Prioridad de adquisición
 

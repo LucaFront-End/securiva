@@ -31,7 +31,7 @@ export default function ResourceLanding({ page }) {
       {page.faq?.length > 0 && <section className="rl-faq"><div><span className="rl-eyebrow">PREGUNTAS FRECUENTES</span><h2>Respuestas.<br/><span>Sin rodeos.</span></h2></div><FaqList items={page.faq}/></section>}
       {page.references?.length > 0 && <section className="rl-references"><span className="rl-eyebrow">FUENTES Y REFERENCIAS TÉCNICAS</span><ul>{page.references.map(reference => <li key={reference.url}><a href={reference.url} target="_blank" rel="noopener noreferrer">{reference.label}<ArrowUpRight size={16}/></a></li>)}</ul><p>Estas referencias orientan la metodología. El alcance y los entregables se acuerdan para cada evaluación.</p></section>}
       {contextualLinks.length > 0 && <nav className="bi-guide-links" aria-label="Recursos para llevarlo a la práctica">{contextualLinks.map(link=><a key={link.path} href={link.path}>{link.title.split(' | ')[0]}<ArrowUpRight size={16}/></a>)}</nav>}
-      {page.isBlog && <RelatedReading page={page}/>}
+      {(page.isBlog || (page.isSample && page.relatedPaths?.some(path=>path.startsWith('/blog/')))) && <RelatedReading page={page}/>}
       <section className="rl-contact"><span className="rl-eyebrow">DEL CONTEXTO A LA ACCIÓN</span><h2>Convirtamos la pregunta<br/><span>en un alcance.</span></h2><button onClick={() => setContact(true)}>Hablar de mi proyecto<ArrowUpRight size={22}/></button></section>
       <section className="rl-services"><span className="rl-eyebrow">SERVICIOS DE SECURIVA</span><ServiceLinks/><MarketResourceLinks/></section>
     </main>

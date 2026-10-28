@@ -1,0 +1,326 @@
+{
+  "date": "2026-10-28",
+  "iteration": 2,
+  "site": "https://securiva.vercel.app/",
+  "deployment": {
+    "publishedPages": 32,
+    "blogArticles": 16,
+    "newPages": [
+      "/pentesting-ecommerce",
+      "/pentesting-saas",
+      "/informe-pentest-ejemplo"
+    ],
+    "countriesServedRemotely": [
+      "Argentina",
+      "México"
+    ],
+    "verificationScript": "node scripts/verify-deployment.mjs"
+  },
+  "discovery": {
+    "sitemapUrls": 32,
+    "rss": "/feed.xml",
+    "rssItems": 16,
+    "publicContentManifest": "/content-index.json",
+    "publicationAndModificationDatesSeparated": true,
+    "buildClockUsedAsContentLastmod": false,
+    "contextualLinks": "Servicios sectoriales, artículos y muestra conectados en ambos sentidos.",
+    "eligibilityIsNotIndexingOrCitationGuarantee": true
+  },
+  "publicSample": {
+    "path": "/informe-pentest-ejemplo",
+    "download": "/samples/securiva-informe-demostracion.txt",
+    "scenario": "Demostración ficticia de autorización por objeto en example.test, con datos sintéticos.",
+    "clientEvidencePublished": false,
+    "plannedRetestCases": 7,
+    "retestExecuted": false,
+    "httpAttachmentVerified": true,
+    "automatedBrowserDownload": "La integración del navegador no devolvió un evento de descarga; no se cuenta como prueba aprobada. URL, archivo y Content-Disposition se verifican por HTTP."
+  },
+  "googleSearchConsole": {
+    "ownershipVerifiedPreviously": true,
+    "indexationReportObserved": "Se están procesando los datos; vuelve a comprobar esta sección mañana.",
+    "lastObservedDiscoveredUrls": 29,
+    "sitemapUrlUnchanged": "https://securiva.vercel.app/sitemap.xml",
+    "generativeControlObserved": "Heredar control de securiva.vercel.app: Incluir",
+    "generativeControlChanged": false,
+    "sitemapResubmittedInThisIteration": false,
+    "indexedUrls": null,
+    "rankingPositions": null
+  },
+  "bingWebmasterTools": {
+    "ownershipVerifiedPreviously": true,
+    "aiPerformanceObserved": "No data available",
+    "scope": "Informe AI Performance Beta de esta propiedad; no demuestra ausencia de citas en todos los asistentes.",
+    "siteScanStarted": false,
+    "indexedUrls": null
+  },
+  "browserSession": {
+    "laterChromeReconnection": "No disponible: Debugger unattached. No se realizaron cambios adicionales en Search Console o Bing después de esa interrupción.",
+    "liveWebsiteQa": "Disponible y verificado en el navegador integrado."
+  },
+  "validation": {
+    "uniqueTestsPassed": 40,
+    "productionBuild": "passed",
+    "seoBuildCheck": "passed",
+    "routeBundleCheck": "passed",
+    "mobileWidthsChecked": [
+      320,
+      390
+    ],
+    "horizontalOverflowObserved": false,
+    "sampleRetestTable": "Scroll horizontal contenido y región accesible por teclado.",
+    "homepageAnimationAndContactDialog": "Verificados sin enviar una consulta.",
+    "coreWebVitalsMeasured": false,
+    "pageSpeedApi": "HTTP 429 en los dos intentos; no se obtuvo puntuación de Lighthouse."
+  },
+  "backlinks": {
+    "newExternalReferringDomainsConfirmed": 0,
+    "outreachMessagesSent": 0,
+    "purchasedLinks": 0,
+    "corporateEmailStillUnavailable": true
+  },
+  "pending": [
+    "Rastreo e indexación, consultas y posiciones reales en Search Console.",
+    "Datos de AI Performance y citas observables.",
+    "Core Web Vitals de campo cuando exista muestra suficiente.",
+    "Analítica conectada y seguimiento comercial de consultas recibidas.",
+    "Correo corporativo y revisión editorial de oportunidades de enlaces externos."
+  ],
+  "productionVerification": {
+    "checkedAt": "2026-10-28T15:20:52.669Z",
+    "origin": "https://securiva.vercel.app",
+    "publishedPages": 32,
+    "results": [
+      {
+        "path": "/",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/",
+        "bytes": 94253
+      },
+      {
+        "path": "/pentesting-web",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/pentesting-web",
+        "bytes": 26821
+      },
+      {
+        "path": "/seguridad-api",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/seguridad-api",
+        "bytes": 26886
+      },
+      {
+        "path": "/white-label-ciberseguridad",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/white-label-ciberseguridad",
+        "bytes": 25952
+      },
+      {
+        "path": "/bug-bounty-privado",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/bug-bounty-privado",
+        "bytes": 26123
+      },
+      {
+        "path": "/argentina",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/argentina",
+        "bytes": 27958
+      },
+      {
+        "path": "/mexico",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/mexico",
+        "bytes": 27856
+      },
+      {
+        "path": "/pentesting-ecommerce",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/pentesting-ecommerce",
+        "bytes": 30015
+      },
+      {
+        "path": "/pentesting-saas",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/pentesting-saas",
+        "bytes": 30177
+      },
+      {
+        "path": "/informe-pentest-ejemplo",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/informe-pentest-ejemplo",
+        "bytes": 30750
+      },
+      {
+        "path": "/sobre-securiva",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/sobre-securiva",
+        "bytes": 20292
+      },
+      {
+        "path": "/recursos",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/recursos",
+        "bytes": 18267
+      },
+      {
+        "path": "/preparar-pentest",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/preparar-pentest",
+        "bytes": 24596
+      },
+      {
+        "path": "/recursos/checklist-pentesting-white-label",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/recursos/checklist-pentesting-white-label",
+        "bytes": 38979
+      },
+      {
+        "path": "/recursos/presupuesto-bug-bounty-privado",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/recursos/presupuesto-bug-bounty-privado",
+        "bytes": 29696
+      },
+      {
+        "path": "/blog",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog",
+        "bytes": 46115
+      },
+      {
+        "path": "/blog/pentest-vs-escaneo-vulnerabilidades",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/pentest-vs-escaneo-vulnerabilidades",
+        "bytes": 29804
+      },
+      {
+        "path": "/blog/definir-alcance-pentest-web",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/definir-alcance-pentest-web",
+        "bytes": 30261
+      },
+      {
+        "path": "/blog/bola-aislamiento-tenant-api",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/bola-aislamiento-tenant-api",
+        "bytes": 30587
+      },
+      {
+        "path": "/blog/autenticacion-autorizacion-api",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/autenticacion-autorizacion-api",
+        "bytes": 30469
+      },
+      {
+        "path": "/blog/inventario-api-openapi-alcance",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/inventario-api-openapi-alcance",
+        "bytes": 31452
+      },
+      {
+        "path": "/blog/retest-correcciones-cierre",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/retest-correcciones-cierre",
+        "bytes": 30604
+      },
+      {
+        "path": "/blog/ciberseguridad-white-label-para-agencias",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/ciberseguridad-white-label-para-agencias",
+        "bytes": 31141
+      },
+      {
+        "path": "/blog/como-vender-pentesting-agencia",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/como-vender-pentesting-agencia",
+        "bytes": 29182
+      },
+      {
+        "path": "/blog/que-debe-incluir-informe-pentest",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/que-debe-incluir-informe-pentest",
+        "bytes": 29525
+      },
+      {
+        "path": "/blog/checklist-seguridad-ecommerce-antes-lanzamiento",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/checklist-seguridad-ecommerce-antes-lanzamiento",
+        "bytes": 32517
+      },
+      {
+        "path": "/blog/elegir-proveedor-pentesting-mexico-argentina",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/elegir-proveedor-pentesting-mexico-argentina",
+        "bytes": 31199
+      },
+      {
+        "path": "/blog/bug-bounty-privado-o-pentest",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/bug-bounty-privado-o-pentest",
+        "bytes": 29184
+      },
+      {
+        "path": "/blog/cvss-severidad-impacto-negocio",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/cvss-severidad-impacto-negocio",
+        "bytes": 28947
+      },
+      {
+        "path": "/blog/presupuesto-recompensas-bug-bounty",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/presupuesto-recompensas-bug-bounty",
+        "bytes": 28562
+      },
+      {
+        "path": "/blog/plan-30-dias-despues-pentest",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/plan-30-dias-despues-pentest",
+        "bytes": 29619
+      },
+      {
+        "path": "/blog/seguridad-saas-roles-tenants-integraciones",
+        "status": 200,
+        "canonical": "https://securiva.vercel.app/blog/seguridad-saas-roles-tenants-integraciones",
+        "bytes": 29645
+      }
+    ],
+    "sitemapUrls": 32,
+    "missingRouteStatus": 404,
+    "linkedAssets": 10,
+    "feedItems": 16,
+    "sampleDownloadStatus": 200
+  },
+  "routeBundleSizes": {
+    "checkedAt": "2026-10-28T15:23:52.166Z",
+    "initial": {
+      "bytes": 227872,
+      "gzip": 71162
+    },
+    "home": {
+      "bytes": 432787,
+      "gzip": 146597
+    },
+    "knowledge": {
+      "bytes": 450411,
+      "gzip": 138244
+    },
+    "services": {
+      "bytes": 297310,
+      "gzip": 93193
+    },
+    "initialFiles": [
+      "assets/index-J5pp57K5.js"
+    ]
+  },
+  "indexNow": {
+    "submittedAt": "2026-10-28T15:21:18.275Z",
+    "submittedUrls": 32,
+    "responseStatus": 200,
+    "meaning": "URLs recibidas; no confirma indexación ni posiciones."
+  },
+  "previousRouteBundleSizes": {
+    "initialBytes": 465730,
+    "knowledgeBytes": 614780,
+    "measurement": "Compiled route graph JS bytes, not field Core Web Vitals"
+  }
+}

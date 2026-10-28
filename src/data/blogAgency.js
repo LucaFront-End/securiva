@@ -136,7 +136,7 @@ export const agencyBlogPosts = [
       {question:'¿El informe white label puede cambiar las conclusiones?',answer:'Personalizar la identidad visual no debería alterar el significado técnico. Los hallazgos, sus límites y los resultados del retest deben conservarse al adaptar la presentación.'},
     ],
     references:[{label:'OWASP WSTG v4.2: Reporting',url:'https://wstg.owasp.org/v4.2/5-Reporting/'}],
-    relatedPaths:['/pentesting-web','/white-label-ciberseguridad','/blog/ciberseguridad-white-label-para-agencias','/blog/elegir-proveedor-pentesting-mexico-argentina'],
+    relatedPaths:['/informe-pentest-ejemplo','/white-label-ciberseguridad','/blog/ciberseguridad-white-label-para-agencias','/blog/elegir-proveedor-pentesting-mexico-argentina'],
   },
   {
     path:'/blog/checklist-seguridad-ecommerce-antes-lanzamiento',kind:'resource',label:'Seguridad de e-commerce',
@@ -179,7 +179,7 @@ export const agencyBlogPosts = [
       {label:'OWASP: integración de pasarelas de pago de terceros',url:'https://cheatsheetseries.owasp.org/cheatsheets/Third_Party_Payment_Gateway_Integration_Cheat_Sheet.html'},
       {label:'OWASP: Business Logic Security',url:'https://cheatsheetseries.owasp.org/cheatsheets/Business_Logic_Security_Cheat_Sheet.html'},
     ],
-    relatedPaths:['/seguridad-api','/pentesting-web','/preparar-pentest','/blog/como-vender-pentesting-agencia'],
+    relatedPaths:['/pentesting-ecommerce','/seguridad-api','/preparar-pentest','/blog/como-vender-pentesting-agencia'],
   },
   {
     path:'/blog/elegir-proveedor-pentesting-mexico-argentina',kind:'resource',label:'Contratar pentesting',
