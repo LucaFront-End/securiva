@@ -1,0 +1,24 @@
+{
+  "name": "securiva",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "test": "node --test tests/security-choreography.test.mjs tests/process-choreography.test.mjs tests/service-choreography.test.mjs",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@vitejs/plugin-react": "^4.4.1",
+    "gsap": "^3.13.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "three": "^0.180.0",
+    "vite": "^6.1.0"
+  },
+  "devDependencies": {}
+}

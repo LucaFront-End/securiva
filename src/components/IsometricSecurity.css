@@ -1,0 +1,68 @@
+.isometric-security {
+  position: relative;
+  width: 100%;
+  height: var(--isometric-height, 480px);
+  isolation: isolate;
+  overflow: hidden;
+  background: #eae9e7;
+  touch-action: pan-y;
+}
+
+.isometric-security-canvas,
+.isometric-fallback {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.isometric-security-canvas {
+  z-index: 1;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.isometric-fallback {
+  z-index: 0;
+  opacity: 1;
+  transition: opacity .4s ease;
+}
+
+.isometric-security[data-ready="true"] .isometric-security-canvas {
+  opacity: 1;
+}
+
+.isometric-security[data-ready="true"] .isometric-fallback {
+  opacity: 0;
+}
+
+.isometric-security[data-motion="off"] .isometric-security-canvas,
+.isometric-security[data-motion="off"] .isometric-fallback {
+  transition: none;
+}
+
+.isometric-evidence {
+  height: var(--isometric-evidence-height, 360px);
+}
+
+.isometric-process {
+  background: #141619;
+}
+
+.isometric-process .isometric-fallback > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  .isometric-security {
+    height: var(--isometric-mobile-height, 330px);
+  }
+
+  .isometric-evidence {
+    height: var(--isometric-evidence-mobile-height, 290px);
+  }
+}

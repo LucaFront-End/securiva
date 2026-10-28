@@ -1,0 +1,10 @@
+/* Root-level anchor scrolling must follow the same motion preference as GSAP. */
+html[data-motion='reduced'] { scroll-behavior: auto !important; }
+.gallery-keyboard-hint {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  border: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+@media (min-width: 960px) {
+  /* clip does not create a second scroll container when focus changes. */
+  .editorial-site[data-motion='full'] .gallery-viewport { overflow: clip; }
+}

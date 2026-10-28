@@ -1,0 +1,55 @@
+.liquid-art {
+  position: relative;
+  width: 100%;
+  height: var(--liquid-art-height, 560px);
+  overflow: hidden;
+  isolation: isolate;
+  background: #eae9e7;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.liquid-art-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  opacity: 1;
+  transition: opacity .45s ease;
+}
+
+.liquid-art-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .45s ease;
+}
+
+.liquid-art[data-ready="true"] .liquid-art-image {
+  opacity: 0;
+}
+
+.liquid-art[data-ready="true"] .liquid-art-canvas {
+  opacity: 1;
+}
+
+.liquid-art[data-motion="off"] .liquid-art-image,
+.liquid-art[data-motion="off"] .liquid-art-canvas {
+  transition: none;
+}
+
+@media (max-width: 767px) {
+  .liquid-art {
+    height: var(--liquid-art-mobile-height, 350px);
+  }
+}
