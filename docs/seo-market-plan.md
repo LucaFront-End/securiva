@@ -6,11 +6,11 @@ El objetivo comercial es conseguir consultas de agencias y empresas que puedan c
 
 ## Estado de la implementación
 
-**Ejecución verificada el 28/10/2026:** las 11 páginas están publicadas y comprobadas en producción. Google Search Console y Bing Webmaster Tools están verificados con etiquetas HTML. Google aceptó el sitemap y muestra 11 URLs descubiertas; Bing lo recibió y lo procesa. IndexNow recibió las 11 URLs con HTTP 202, pendiente de validación de clave. Esto no confirma indexación ni posiciones. El registro detallado está en [execution-2026-10-28.json](seo/execution-2026-10-28.json).
+**Ejecución verificada el 28/10/2026:** hay 29 páginas publicadas y comprobadas en producción, incluidas 16 entradas de blog. Google Search Console y Bing Webmaster Tools están verificados con etiquetas HTML. Google aceptó el sitemap y muestra 29 URLs descubiertas; Bing recibió la ampliación y la procesa. IndexNow recibió las 29 URLs con HTTP 200. Esto no confirma indexación ni posiciones. El registro detallado está en [execution-2026-10-28.json](seo/execution-2026-10-28.json).
 
-Se publicaron cinco destinos contextuales nuevos desde el README de GitHub, verificados con `rel=nofollow`, y se actualizó la descripción del repositorio. El dominio de referencia ya existía: no se cuenta como un dominio nuevo. La ficha de pentest.fyi quedó preparada y sin enviar porque requiere correo corporativo; el usuario confirmó que no dispone de él.
+Se publicaron seis destinos contextuales nuevos desde el README de GitHub, verificados con `rel=nofollow`, y se actualizó la descripción del repositorio. El dominio de referencia ya existía: no se cuenta como un dominio nuevo. La ficha de pentest.fyi quedó preparada y sin enviar porque requiere correo corporativo; el usuario confirmó que no dispone de él.
 
-El lote inicial de esta ampliación contiene **11 páginas publicables**: cinco páginas existentes, dos hubs de país y cuatro páginas de recursos. El registro técnico está en `src/data/pageRegistry.js`; el despliegue y las herramientas de webmaster deben comprobarse por separado. El hecho de que una URL aparezca en sitemap no demuestra que esté indexada ni posicione.
+El primer lote de esta ampliación contenía **11 páginas publicadas**: cinco páginas existentes, dos hubs de país y cuatro páginas de recursos. El registro técnico está en `src/data/pageRegistry.js`; el despliegue y las herramientas de webmaster deben comprobarse por separado. El hecho de que una URL aparezca en sitemap no demuestra que esté indexada ni posicione.
 
 | Página | Decisión que resuelve |
 | --- | --- |
@@ -29,6 +29,14 @@ El lote inicial de esta ampliación contiene **11 páginas publicables**: cinco 
 Hay **200 briefs de ciudad y servicio**, calculados como 25 ciudades por país × 2 países × 4 intenciones. Son una cartera editorial, **no 200 páginas publicadas o indexables**. Su registro está en `src/data/regionalSeo.js`. Cada una debe aportar evidencia o investigación propia pertinente, utilidad distinta al servicio nacional, un recurso original, autorización de las afirmaciones y revisión editorial completa. Repetir la landing cambiando la ciudad no satisface ese criterio.
 
 La atención remota no acredita oficinas en las ciudades. No publicar direcciones, coordenadas, horarios locales o datos de `LocalBusiness` sin una sede real. Los países sí pueden describirse como áreas atendidas.
+
+## Blog publicado y prácticas aplicadas
+
+Se añadieron /blog, 16 artículos y /sobre-securiva. El total actual es 29 URLs. Los artículos cubren decisiones concretas de alcance, APIs, venta para agencias, evidencia, retest, presupuesto y gestión; no son variantes de ciudades. Cada entrada tiene fuentes primarias, ejemplos hipotéticos identificados, artículos relacionados, CTA y una imagen social propia. BlogPosting referencia al responsable y su presentación pública.
+
+El índice permite filtrar por tema y buscar con o sin tildes. Las 16 entradas y sus enlaces existen en HTML antes de ejecutar JavaScript. La carga del contenido se separa de la landing; no se añaden todos los artículos al JavaScript inicial de la portada.
+
+Se revisaron las guías oficiales y las rutas de aprendizaje anunciadas por Google el 6/10/2026. La lista de comprobación está en [google-practices.json](seo/google-practices.json). No se afirma que se haya completado un curso de vídeo ni obtenido una certificación. Validación: 28 pruebas, build, enlaces internos, 29 HTML públicos, metadatos, imágenes 1200×630 y móvil 390/320px.
 
 ## Prioridad de adquisición
 
@@ -137,4 +145,3 @@ Revisión semanal: errores de indexación, solicitudes recibidas, fuentes y enla
 - [Bing: Topics Portfolio Beta, octubre de 2026](https://blogs.bing.com/webmaster/2026/10/introducing-topics-portfolio-beta-in-ai-performance/).
 
 Las fuentes y requisitos de cada oportunidad están junto a su registro JSON. La investigación no incluye mensajes enviados, compras, ni altas publicadas por el agente investigador. Registrar cualquier ejecución posterior con su evidencia real.
-

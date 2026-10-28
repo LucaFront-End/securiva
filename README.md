@@ -100,7 +100,7 @@ Para GEO, revisar la inclusión en funciones generativas y su reporte en Search 
 
 ## Blog y contenido
 
-Los 16 artículos se agrupan en pentesting, APIs, agencias, bug bounty y gestión. Incluyen referencias primarias, ejemplos hipotéticos identificados, enlaces relacionados y CTA de alcance. BlogPosting describe el contenido visible con autor, fechas e imagen social propia de1200×630. La búsqueda local tolera tildes; filtros y enlaces se renderizan sin depender de una petición externa. KnowledgeRoutes se carga por ruta para conservar liviana la portada.
+Los 16 artículos se agrupan en pentesting, APIs, agencias, bug bounty y gestión. Incluyen referencias primarias, ejemplos hipotéticos identificados, enlaces relacionados y CTA de alcance. BlogPosting describe el contenido visible con autor, fechas e imagen social propia de 1200×630. La búsqueda local tolera tildes; filtros y enlaces se renderizan sin depender de una petición externa. KnowledgeRoutes se carga por ruta para conservar liviana la portada.
 
 La revisión de las guías oficiales y su aplicación está en docs/seo/google-practices.json. Se consultaron las rutas formativas de Google, sin afirmar haber completado vídeos ni una certificación. Los cambios se miden en Search Console y Bing; no existe garantía de posición.
 

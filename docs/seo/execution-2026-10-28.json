@@ -2,10 +2,14 @@
   "date": "2026-10-28",
   "site": "https://securiva.vercel.app/",
   "deployment": {
-    "publishedPages": 11,
-    "countriesServedRemotely": ["Argentina", "México"],
-    "verified": "HTTP 200, HTML propio, H1, idioma, canonical y schema en las 11 URLs; sitemap de 11 URLs; ruta inexistente HTTP 404.",
-    "verificationScript": "node scripts/verify-deployment.mjs"
+    "publishedPages": 29,
+    "countriesServedRemotely": [
+      "Argentina",
+      "México"
+    ],
+    "verified": "HTTP 200, HTML propio, H1, idioma, canonical y schema en las 29 URLs; sitemap de 29 URLs; ruta inexistente HTTP 404.",
+    "verificationScript": "node scripts/verify-deployment.mjs",
+    "blogArticles": 16
   },
   "googleSearchConsole": {
     "property": "https://securiva.vercel.app/",
@@ -13,7 +17,7 @@
     "method": "HTML meta tag",
     "sitemapSubmitted": "https://securiva.vercel.app/sitemap.xml",
     "observedSitemapStatus": "Correcto",
-    "observedDiscoveredUrls": 11,
+    "observedDiscoveredUrls": 29,
     "indexedUrls": null,
     "rankingPositions": null
   },
@@ -22,13 +26,15 @@
     "ownershipVerified": true,
     "method": "HTML meta tag",
     "sitemapSubmitted": "https://securiva.vercel.app/sitemap.xml",
-    "observedSitemapStatus": "Processing",
-    "indexedUrls": null
+    "observedSitemapStatus": "Processing after re-submit",
+    "indexedUrls": null,
+    "lastObservedDiscoveredUrls": 11,
+    "updatedSitemapResubmitted": true
   },
   "indexNow": {
-    "submittedUrls": 11,
-    "responseStatus": 202,
-    "meaning": "Aceptado; validación de la clave pendiente. No confirma indexación ni ranking."
+    "submittedUrls": 29,
+    "responseStatus": 200,
+    "meaning": "URLs recibidas; no confirma indexación ni posiciones."
   },
   "backlinks": {
     "source": "https://github.com/LucaFront-End/securiva",
@@ -39,7 +45,8 @@
       "https://securiva.vercel.app/recursos/checklist-pentesting-white-label",
       "https://securiva.vercel.app/recursos/presupuesto-bug-bounty-privado",
       "https://securiva.vercel.app/argentina",
-      "https://securiva.vercel.app/mexico"
+      "https://securiva.vercel.app/mexico",
+      "https://securiva.vercel.app/blog"
     ],
     "observedRel": "nofollow",
     "newReferringDomainsConfirmed": 0,
@@ -58,13 +65,19 @@
     "reason": "Los briefs de ciudad requieren contenido diferencial y revisión; no se generan landing pages repetidas cambiando el nombre de la ciudad."
   },
   "validation": {
-    "uniqueTestsPassed": 27,
+    "uniqueTestsPassed": 28,
     "productionBuild": "passed",
     "seoBuildCheck": "passed",
-    "mobileWidthsChecked": [390, 320],
+    "mobileWidthsChecked": [
+      390,
+      320
+    ],
     "horizontalOverflowObserved": false,
     "toolCopyAndDownload": "verified",
-    "contactDialog": "verified_without_sending"
+    "contactDialog": "verified_without_sending",
+    "blogFiltersAndAccentSearch": "verified",
+    "articleAuthorAndRelatedLinks": "verified",
+    "blogLandingScriptSplit": "465.73 KB initial JS (154.96 KB gzip), 149.05 KB knowledge route chunk (45.28 KB gzip), 3D deferred chunk unchanged"
   },
   "pending": [
     "Rastreo, indexación y datos de consultas de buscadores.",
@@ -73,5 +86,124 @@
     "Nuevos dominios de referencia externos y aprobaciones de perfiles.",
     "Opiniones y puntuaciones auténticas antes de publicar testimonios.",
     "Analítica conectada y registro comercial de consultas recibidas."
+  ],
+  "checkedAt": "2026-10-28T04:56:59.709Z",
+  "productionVerification": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/pentesting-web",
+      "status": 200
+    },
+    {
+      "path": "/seguridad-api",
+      "status": 200
+    },
+    {
+      "path": "/white-label-ciberseguridad",
+      "status": 200
+    },
+    {
+      "path": "/bug-bounty-privado",
+      "status": 200
+    },
+    {
+      "path": "/argentina",
+      "status": 200
+    },
+    {
+      "path": "/mexico",
+      "status": 200
+    },
+    {
+      "path": "/sobre-securiva",
+      "status": 200
+    },
+    {
+      "path": "/recursos",
+      "status": 200
+    },
+    {
+      "path": "/preparar-pentest",
+      "status": 200
+    },
+    {
+      "path": "/recursos/checklist-pentesting-white-label",
+      "status": 200
+    },
+    {
+      "path": "/recursos/presupuesto-bug-bounty-privado",
+      "status": 200
+    },
+    {
+      "path": "/blog",
+      "status": 200
+    },
+    {
+      "path": "/blog/pentest-vs-escaneo-vulnerabilidades",
+      "status": 200
+    },
+    {
+      "path": "/blog/definir-alcance-pentest-web",
+      "status": 200
+    },
+    {
+      "path": "/blog/bola-aislamiento-tenant-api",
+      "status": 200
+    },
+    {
+      "path": "/blog/autenticacion-autorizacion-api",
+      "status": 200
+    },
+    {
+      "path": "/blog/inventario-api-openapi-alcance",
+      "status": 200
+    },
+    {
+      "path": "/blog/retest-correcciones-cierre",
+      "status": 200
+    },
+    {
+      "path": "/blog/ciberseguridad-white-label-para-agencias",
+      "status": 200
+    },
+    {
+      "path": "/blog/como-vender-pentesting-agencia",
+      "status": 200
+    },
+    {
+      "path": "/blog/que-debe-incluir-informe-pentest",
+      "status": 200
+    },
+    {
+      "path": "/blog/checklist-seguridad-ecommerce-antes-lanzamiento",
+      "status": 200
+    },
+    {
+      "path": "/blog/elegir-proveedor-pentesting-mexico-argentina",
+      "status": 200
+    },
+    {
+      "path": "/blog/bug-bounty-privado-o-pentest",
+      "status": 200
+    },
+    {
+      "path": "/blog/cvss-severidad-impacto-negocio",
+      "status": 200
+    },
+    {
+      "path": "/blog/presupuesto-recompensas-bug-bounty",
+      "status": 200
+    },
+    {
+      "path": "/blog/plan-30-dias-despues-pentest",
+      "status": 200
+    },
+    {
+      "path": "/blog/seguridad-saas-roles-tenants-integraciones",
+      "status": 200
+    }
   ]
 }
