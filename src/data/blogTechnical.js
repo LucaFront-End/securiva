@@ -2,7 +2,7 @@
 // Technical references were checked on 2026-10-28; no article promises complete coverage.
 export const technicalBlogPosts = [
   {
-    path:'/blog/pentest-vs-escaneo-vulnerabilidades', kind:'resource', label:'Pentest o escaneo', category:'Pentesting', readingMinutes:5, updatedAt:'2026-10-28',
+    path:'/blog/pentest-vs-escaneo-vulnerabilidades', kind:'resource', label:'Pentest o escaneo', category:'Pentesting', readingMinutes:5, publishedAt:'2026-10-28', updatedAt:'2026-10-28',
     title:'Pentest vs. escaneo de vulnerabilidades.', emphasis:'Qué estás contratando.',
     description:'Diferencias entre un pentest y un escaneo de vulnerabilidades: cobertura, validación, entregables y preguntas para comparar propuestas de seguridad.',
     summary:'Un escaneo busca señales y patrones con herramientas. Un pentest investiga y valida problemas dentro de un alcance autorizado, con atención al contexto del producto. Ambos pueden aportar valor; la decisión depende de qué necesitas comprobar y de qué entrega incluye la propuesta.',
@@ -23,7 +23,7 @@ export const technicalBlogPosts = [
     relatedPaths:['/pentesting-web','/preparar-pentest','/blog/definir-alcance-pentest-web','/blog/retest-correcciones-cierre'],
   },
   {
-    path:'/blog/definir-alcance-pentest-web', kind:'resource', label:'Alcance de un pentest web', category:'Pentesting', readingMinutes:5, updatedAt:'2026-10-28',
+    path:'/blog/definir-alcance-pentest-web', kind:'resource', label:'Alcance de un pentest web', category:'Pentesting', readingMinutes:5, publishedAt:'2026-10-28', updatedAt:'2026-10-28',
     title:'Cómo definir el alcance de un pentest web.', emphasis:'Antes de pedir un precio.',
     description:'Prepara el alcance de un pentest web con activos, roles, flujos, entornos, permisos y entregables. Checklist para agencias y equipos de producto.',
     summary:'El alcance de un pentest web describe qué se evalúa, con qué objetivos, bajo qué autorización y con qué límites. No se reduce a una URL: también importan los roles, los procesos, los accesos y las condiciones que hacen posible una evaluación representativa.',
@@ -44,7 +44,7 @@ export const technicalBlogPosts = [
     relatedPaths:['/preparar-pentest','/pentesting-web','/recursos/checklist-pentesting-white-label','/blog/inventario-api-openapi-alcance'],
   },
   {
-    path:'/blog/bola-aislamiento-tenant-api', kind:'resource', label:'BOLA y aislamiento entre clientes', category:'APIs', readingMinutes:5, updatedAt:'2026-10-28',
+    path:'/blog/bola-aislamiento-tenant-api', kind:'resource', label:'BOLA y aislamiento entre clientes', category:'APIs', readingMinutes:5, publishedAt:'2026-10-28', updatedAt:'2026-10-28',
     title:'BOLA y aislamiento entre tenants.', emphasis:'La pregunta detrás de cada dato.',
     description:'Qué es BOLA y cómo preparar una revisión defensiva del aislamiento entre clientes de una API: identidades, objetos, permisos y evidencia de validación.',
     summary:'BOLA es una falla de autorización a nivel de objeto: una identidad accede o actúa sobre un recurso que no le corresponde. En un SaaS con varios clientes, revisar el aislamiento entre tenants exige entender a qué organización pertenece cada objeto y qué relaciones permiten utilizarlo.',
@@ -65,7 +65,7 @@ export const technicalBlogPosts = [
     relatedPaths:['/seguridad-api','/preparar-pentest','/blog/autenticacion-autorizacion-api','/blog/inventario-api-openapi-alcance'],
   },
   {
-    path:'/blog/autenticacion-autorizacion-api', kind:'resource', label:'Identidad y permisos en APIs', category:'APIs', readingMinutes:5, updatedAt:'2026-10-28',
+    path:'/blog/autenticacion-autorizacion-api', kind:'resource', label:'Identidad y permisos en APIs', category:'APIs', readingMinutes:5, publishedAt:'2026-10-28', updatedAt:'2026-10-28',
     title:'Autenticación y autorización en APIs.', emphasis:'Dos preguntas diferentes.',
     description:'Distingue autenticación y autorización en una API. Qué revisar sobre identidad, permisos, funciones y recursos antes de contratar una evaluación.',
     summary:'La autenticación establece quién realiza una solicitud. La autorización decide qué puede hacer esa identidad con una función o un recurso. Una API necesita resolver ambas preguntas: una sesión válida no concede automáticamente acceso a todos los datos y acciones del producto.',
@@ -86,7 +86,7 @@ export const technicalBlogPosts = [
     relatedPaths:['/seguridad-api','/preparar-pentest','/blog/bola-aislamiento-tenant-api','/blog/definir-alcance-pentest-web'],
   },
   {
-    path:'/blog/inventario-api-openapi-alcance', kind:'resource', label:'Inventario y alcance de APIs', category:'APIs', readingMinutes:5, updatedAt:'2026-10-28',
+    path:'/blog/inventario-api-openapi-alcance', kind:'resource', label:'Inventario y alcance de APIs', category:'APIs', readingMinutes:5, publishedAt:'2026-10-28', updatedAt:'2026-10-28',
     title:'Inventario de APIs y OpenAPI.', emphasis:'Saber qué entra en la evaluación.',
     description:'Cómo preparar un inventario de APIs para pentesting: operaciones, OpenAPI, versiones, roles, integraciones y diferencias entre documentación y despliegue.',
     summary:'Un inventario de APIs identifica qué interfaces existen, quién las controla y cuáles entran en la evaluación. Una descripción OpenAPI ayuda a documentar operaciones y mecanismos de acceso, pero necesita contrastarse con el despliegue y completarse con los flujos y reglas del producto.',
@@ -108,7 +108,7 @@ export const technicalBlogPosts = [
     relatedPaths:['/seguridad-api','/preparar-pentest','/blog/bola-aislamiento-tenant-api','/blog/definir-alcance-pentest-web'],
   },
   {
-    path:'/blog/retest-correcciones-cierre', kind:'resource', label:'Retest y cierre de hallazgos', category:'Pentesting', readingMinutes:5, updatedAt:'2026-10-28',
+    path:'/blog/retest-correcciones-cierre', kind:'resource', label:'Retest y cierre de hallazgos', category:'Pentesting', readingMinutes:5, publishedAt:'2026-10-28', updatedAt:'2026-10-28',
     title:'Retest de seguridad.', emphasis:'Cómo verificar una corrección y cerrar el hallazgo.',
     description:'Qué incluye un retest de seguridad, cómo preparar las correcciones y qué evidencia pedir para cerrar hallazgos de un pentest web o de APIs.',
     summary:'Un retest verifica las correcciones de hallazgos previamente documentados bajo condiciones acordadas. Para que el cierre sea útil, necesita una referencia del hallazgo, un entorno identificable, accesos adecuados y un resultado que distinga lo corregido de lo pendiente o no verificable.',

@@ -1,5 +1,5 @@
 import ResourceLanding from './ResourceLanding'
-import { NotFoundPage } from './ServiceLanding'
+import NotFoundPage from './NotFoundPage'
 import { publishedResourcePages } from '../data/pageRegistry'
 
 export default function KnowledgeRoutes({path}) {

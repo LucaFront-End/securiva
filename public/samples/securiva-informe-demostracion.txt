@@ -1,0 +1,76 @@
+TU AGENCIA — MUESTRA TÉCNICA WHITE LABEL
+SECURIVA / DEMO-API-01
+ESCENARIO FICTICIO. NO ES UNA AUDITORÍA REAL.
+
+Todos los activos, identidades, solicitudes y resultados de este documento son ficticios. No corresponde a un cliente ni demuestra pruebas realizadas. Este archivo permite evaluar el formato de una entrega; no certifica la seguridad de un producto.
+
+01 / RESUMEN EJECUTIVO
+En la simulación, una cuenta puede leer un documento de otra organización. El servicio identifica a quien inició sesión, pero omite comprobar sus permisos sobre ese documento. En un producto real, este patrón podría exponer información entre clientes. La decisión propuesta es revisar ese límite antes de ampliar el acceso al producto.
+
+02 / ALCANCE
+Proyecto: portal SaaS de demostración.
+Activo ficticio: https://example.test.
+Operación ilustrada: lectura de documentos.
+Organizaciones: A y B, ambas con datos sintéticos.
+Cuenta fixture-a: lector de A; no puede escribir ni administrar.
+Cuenta fixture-b: administrador de B; su rol no le concede acceso a A.
+Exclusiones: pagos, infraestructura, servicios externos y otras rutas de la aplicación.
+
+03 / HALLAZGO DEMO-01
+Lectura de un documento fuera de la organización autorizada.
+Clasificación: autorización por objeto / BOLA.
+Prioridad orientativa: revisar antes de ampliar el acceso.
+No se asigna una puntuación CVSS a esta muestra. La severidad real depende de los datos, los permisos, la exposición y el impacto demostrable.
+
+Esperado: fixture-a recibe una denegación al solicitar un documento de B, sin obtener su contenido. El producto debe aplicar su política de errores de forma coherente.
+Simulado: una respuesta ficticia devuelve un documento de B a fixture-a. Esto ilustra una autorización incompleta en ese objeto; no demuestra que toda la API tenga el mismo problema.
+
+Solicitud conceptual:
+GET /api/documents/DEMO-B-01
+Host: example.test
+Contexto de la muestra: fixture-a / organización A
+
+Respuesta de demostración:
+HTTP 200 / RESPUESTA FICTICIA
+{
+  "document_id": "DEMO-B-01",
+  "organization": "B",
+  "content": "[DATO SINTÉTICO]"
+}
+
+Los fragmentos no son tráfico real, credenciales ni una secuencia para probar sistemas ajenos.
+
+04 / CONDICIONES DE CORRECCIÓN
+- Obtener organización y permisos desde una sesión validada por el servidor.
+- Comprobar el contexto, la relación con el objeto y la acción solicitada en cada acceso.
+- Mantener al administrador dentro de su ámbito autorizado.
+- Denegar cuando falten permisos y añadir pruebas de regresión positivas y negativas.
+- Revisar operaciones equivalentes dentro del alcance acordado.
+
+Pseudocódigo orientativo, a adaptar al modelo del producto:
+documento = buscarEnOrganizacion(sesion.organizacion, idSolicitado)
+permitirSoloSi(documento existe Y tienePermiso(sesion, "leer", documento))
+
+05 / PLAN DE RETEST — NO EJECUTADO
+Identidad | Recurso | Acción | Esperado | Tras corregir
+fixture-a / lector | Propio A | Leer | Permitido | Por ejecutar
+fixture-a / lector | Ajeno B | Leer | Denegado | Por ejecutar
+fixture-a / lector | Propio A | Escribir | Denegado | Por ejecutar
+fixture-b / administrador | Propio B | Leer y escribir | Permitido | Por ejecutar
+fixture-b / administrador | Ajeno A | Escribir | Denegado | Por ejecutar
+fixture-b / administrador | Ámbito B | Administrar | Permitido | Por ejecutar
+fixture-a / lector | Ámbito A | Administrar | Denegado | Por ejecutar
+
+En un retest real se registrarían versión, entorno, identidad, acción, evidencia y resultado. Los controles permitidos también deben seguir funcionando. Si el problema persiste, continúa abierto. Si faltan accesos o el entorno no representa la corrección, se documenta esa limitación. Una corrección puntual no acredita la seguridad completa del producto.
+
+06 / ENTREGA WHITE LABEL
+La agencia puede presentar una entrega con su identidad y coordinar la conversación con el cliente. En un proyecto real, el formato, el alcance, la confidencialidad y las condiciones del retest se acuerdan antes de iniciar las pruebas.
+
+REFERENCIAS
+OWASP API1:2023 — Broken Object Level Authorization
+https://api-security.owasp.org/editions/2023/en/0xa1-broken-object-level-authorization/
+OWASP — Authorization Cheat Sheet
+https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
+
+SECURIVA — Real Security. Real Impact.
+https://securiva.vercel.app/informe-pentest-ejemplo

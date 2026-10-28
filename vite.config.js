@@ -9,9 +9,10 @@ const cleanPreviewUrls = {
     const paths=new Set(seoPages.map(page=>page.path))
     server.middlewares.use((request,response,next)=>{
       const url=new URL(request.url,'http://localhost')
+      if (url.pathname === '/samples/securiva-informe-demostracion.txt') response.setHeader('Content-Disposition','attachment; filename="SECURIVA_Informe_Demostracion.txt"')
       if (url.pathname !== '/' && paths.has(url.pathname)) request.url=url.pathname+'.html'+url.search
       next()
     })
   },
 }
-export default defineConfig({ plugins: [react(),cleanPreviewUrls] })
+export default defineConfig({ plugins: [react(),cleanPreviewUrls], build:{manifest:true} })

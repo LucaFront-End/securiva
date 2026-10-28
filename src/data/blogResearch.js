@@ -11,7 +11,7 @@ export const researchBlogPosts = [
     "summary": "Una fecha de lanzamiento, un requisito de un cliente y una investigación continua plantean decisiones distintas. Esta guía propone preguntas concretas para elegir cómo evaluar una aplicación sin confundir cobertura, recompensas y resultados.",
     "category": "Bug bounty",
     "readingMinutes": 5,
-    "updatedAt": "2026-10-28",
+    publishedAt:'2026-10-28', updatedAt:'2026-10-28',
     "sections": [
       {
         "id": "pregunta-correcta",
@@ -121,7 +121,7 @@ export const researchBlogPosts = [
     "summary": "Una puntuación ayuda a describir una vulnerabilidad, pero la decisión de negocio también necesita exposición, datos, responsables y alternativas. Este método permite convertir un número en una prioridad defendible.",
     "category": "Gestión",
     "readingMinutes": 5,
-    "updatedAt": "2026-10-28",
+    publishedAt:'2026-10-28', updatedAt:'2026-10-28',
     "sections": [
       {
         "id": "numero",
@@ -230,7 +230,7 @@ export const researchBlogPosts = [
     "summary": "Una tabla de recompensas solo funciona cuando el programa define qué se acepta, cómo se valora y quién aprueba el gasto. Esta plantilla de decisiones ayuda a acordar un presupuesto controlable antes de comenzar.",
     "category": "Bug bounty",
     "readingMinutes": 5,
-    "updatedAt": "2026-10-28",
+    publishedAt:'2026-10-28', updatedAt:'2026-10-28',
     "sections": [
       {
         "id": "capas",
@@ -335,7 +335,7 @@ export const researchBlogPosts = [
     "summary": "Un informe no se cierra al guardarlo en una carpeta. Este plan organiza recepción, prioridades, correcciones y verificación. Los 30 días son una referencia de coordinación, no un plazo seguro para dejar pendientes todos los hallazgos.",
     "category": "Gestión",
     "readingMinutes": 5,
-    "updatedAt": "2026-10-28",
+    publishedAt:'2026-10-28', updatedAt:'2026-10-28',
     "sections": [
       {
         "id": "recepcion",
@@ -445,7 +445,7 @@ export const researchBlogPosts = [
     "summary": "Una aplicación multiempresa necesita distinguir qué puede hacer una persona, sobre qué recurso y dentro de qué organización. Este mapa ayuda a preparar una evaluación defensiva con cuentas autorizadas y datos controlados.",
     "category": "Gestión",
     "readingMinutes": 5,
-    "updatedAt": "2026-10-28",
+    publishedAt:'2026-10-28', updatedAt:'2026-10-28',
     "sections": [
       {
         "id": "mapa",

@@ -30,7 +30,11 @@ for (const page of seoPages) {
   }
   for (const match of html.matchAll(/<a\b[^>]*href="(\/(?!\/)[^"]*)"/g)) {
     const href=match[1].split(/[?#]/)[0] || '/'
-    assert.ok(seoPages.some(item=>item.path===href),`${page.path}: enlace interno sin página publicada: ${href}`)
+    if (!seoPages.some(item=>item.path===href)) {
+      const asset=path.resolve(output,'.'+href)
+      assert.ok(asset.startsWith(output+path.sep),`${page.path}: enlace fuera del sitio: ${href}`)
+      assert.ok((await fs.stat(asset)).isFile(),`${page.path}: enlace interno sin recurso: ${href}`)
+    }
   }
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])
   assert.equal(schema['@context'], 'https://schema.org')
@@ -44,6 +48,10 @@ if (indexable) {
   assert.equal((sitemap.match(/<loc>/g) || []).length, seoPages.length)
   for (const page of seoPages) assert.ok(sitemap.includes(`<loc>${getPageMetadata(page.path, process.env).canonical}</loc>`))
   assert.ok(robots.includes(`Sitemap: ${getPageMetadata('/', process.env).origin}/sitemap.xml`))
+  const feed=await fs.readFile(path.join(output,'feed.xml'),'utf8')
+  const manifest=JSON.parse(await fs.readFile(path.join(output,'content-index.json'),'utf8'))
+  assert.equal((feed.match(/<item>/g)||[]).length,manifest.items.length)
+  for(const item of manifest.items)assert.ok(sitemap.includes(item.url))
 } else {
   assert.ok(!robots.includes('Sitemap:'))
   await assert.rejects(fs.access(path.join(output, 'sitemap.xml')))

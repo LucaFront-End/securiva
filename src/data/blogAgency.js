@@ -1,3 +1,4 @@
+const publishedAt = '2026-10-28'
 const updatedAt = '2026-10-28'
 
 export const agencyBlogPosts = [
@@ -6,7 +7,7 @@ export const agencyBlogPosts = [
     title:'Ciberseguridad white label para agencias.',emphasis:'Quién hace qué.',
     description:'Cómo funciona la ciberseguridad white label: responsabilidades de la agencia, del cliente y del equipo técnico, autorizaciones, entregables y retest.',
     summary:'La ciberseguridad white label permite a una agencia incorporar una evaluación técnica a su oferta y presentar el entregable con su identidad. Para que funcione, hay que acordar mucho más que el logo del informe: quién vende, quién autoriza las pruebas, quién investiga y quién acompaña las correcciones. Esta guía propone una distribución práctica de esas responsabilidades.',
-    category:'Agencias',readingMinutes:5,updatedAt,
+    category:'Agencias',readingMinutes:5,publishedAt,updatedAt,
     sections:[
       {id:'modelo',title:'El servicio empieza antes del informe',paragraphs:[
         'Una agencia puede desarrollar un portal y contratar a un especialista para evaluar su seguridad antes de entregarlo. La agencia organiza la propuesta comercial y la relación con el cliente. El especialista ejecuta las pruebas acordadas y prepara la evidencia. El cliente, como responsable de los activos, participa en la autorización y en las decisiones sobre correcciones. La modalidad comercial no elimina ninguna de esas funciones.',
@@ -52,7 +53,7 @@ export const agencyBlogPosts = [
     title:'Cómo vender pentesting en tu agencia.',emphasis:'Una primera oferta clara.',
     description:'Diseña una primera oferta de pentesting para tu agencia: cliente adecuado, alcance, entregables, presupuesto y preguntas comerciales sin promesas imposibles.',
     summary:'Una primera oferta de pentesting se vende mejor cuando responde a una decisión concreta del cliente: entregar una aplicación, revisar una integración o atender un requisito de seguridad. La propuesta debe explicar qué se evaluará y qué podrá hacer el equipo con el resultado. Este método ayuda a estructurar esa oferta sin inventar precios de mercado ni prometer una aplicación libre de vulnerabilidades.',
-    category:'Agencias',readingMinutes:5,updatedAt,
+    category:'Agencias',readingMinutes:5,publishedAt,updatedAt,
     sections:[
       {id:'momento',title:'Elegí un momento de compra reconocible',paragraphs:[
         'Empezá por los proyectos que ya conocés. Una aplicación próxima a salir, un cambio de autenticación o un portal que incorpora nuevos roles ofrece una conversación concreta. Preguntá qué cambió y qué necesita comprobar el cliente antes de aprobar la entrega. Esa respuesta orienta el trabajo y ayuda a decidir si un pentest es adecuado para ese momento.',
@@ -97,7 +98,7 @@ export const agencyBlogPosts = [
     title:'Qué debe incluir un informe de pentest.',emphasis:'De la evidencia a la decisión.',
     description:'Distingue el resumen ejecutivo y el informe técnico de un pentest. Revisa alcance, evidencia, prioridades, correcciones y estados de retest con un ejemplo.',
     summary:'Un informe de pentest debe permitir que negocio decida y que desarrollo actúe. El resumen ejecutivo explica qué significa lo observado para el proyecto. El detalle técnico permite comprender y reproducir cada hallazgo dentro de las condiciones autorizadas. Ambos necesitan una referencia común: qué se evaluó, qué quedó fuera y qué evidencia sostiene las conclusiones.',
-    category:'Agencias',readingMinutes:5,updatedAt,
+    category:'Agencias',readingMinutes:5,publishedAt,updatedAt,
     sections:[
       {id:'lectores',title:'Dos lectores, una misma evaluación',paragraphs:[
         'Un responsable de negocio necesita saber qué decisión tomar. Un desarrollador necesita localizar el comportamiento y verificar una corrección. Presentar a ambos una captura de pantalla sin explicación deja preguntas abiertas. Tampoco alcanza con un semáforo de riesgos que no se conecte con evidencia. El informe debe permitir pasar de una perspectiva a la otra sin cambiar el significado del hallazgo.',
@@ -142,7 +143,7 @@ export const agencyBlogPosts = [
     title:'Seguridad antes de lanzar un e-commerce.',emphasis:'Revisá los recorridos que importan.',
     description:'Checklist de seguridad antes de publicar una tienda: cuentas, pedidos, permisos, pagos, integraciones y preparación de una evaluación autorizada.',
     summary:'Antes de lanzar una tienda, conviene revisar cómo se conectan las cuentas, los pedidos, los pagos y las operaciones del equipo. Esta checklist organiza preguntas para desarrollo y para una evaluación autorizada. Sirve para preparar el trabajo y detectar decisiones pendientes; completarla no certifica la seguridad de una tienda ni sustituye las pruebas del alcance acordado.',
-    category:'Agencias',readingMinutes:5,updatedAt,
+    category:'Agencias',readingMinutes:5,publishedAt,updatedAt,
     sections:[
       {id:'inventario',title:'Dibujá el recorrido completo de una compra',paragraphs:[
         'Empezá por una compra normal y anotá los sistemas que participan: tienda, backend, proveedor de pagos, logística y herramientas de administración. Identificá qué equipo mantiene cada componente y dónde cambia el estado del pedido. Este mapa ayuda a elegir los recorridos de prueba y evita considerar todo el ecosistema como una única aplicación controlada por la agencia.',
@@ -185,7 +186,7 @@ export const agencyBlogPosts = [
     title:'Cómo elegir un proveedor de pentesting.',emphasis:'En México y Argentina.',
     description:'Compara proveedores de pentesting en México y Argentina por cobertura, evidencia, responsables, informe, retest y condiciones de trabajo remoto.',
     summary:'Para elegir un proveedor de pentesting en México o Argentina, compará la evaluación que realmente propone y la evidencia de que puede ejecutarla. La ubicación comercial, una lista de herramientas o una tarifa aislada no explican la cobertura. Esta guía organiza una comparación práctica de alcance, equipo, entregables y coordinación para empresas y agencias que contratan trabajo remoto.',
-    category:'Agencias',readingMinutes:5,updatedAt,
+    category:'Agencias',readingMinutes:5,publishedAt,updatedAt,
     sections:[
       {id:'objetivo',title:'Primero escribí la decisión que querés tomar',paragraphs:[
         'La selección empieza con tu proyecto. ¿Necesitás revisar una aplicación antes de lanzarla, profundizar en permisos de una API o incorporar una evaluación a una entrega de agencia? Un objetivo claro permite pedir propuestas comparables. Si cada proveedor imagina un trabajo distinto, la diferencia de precios no dice mucho sobre cuál conviene contratar.',

@@ -1,4 +1,6 @@
 import { seoPages } from '../data/pageRegistry.js'
+import { blogPosts } from '../data/blog.js'
+import { getContentLastmod, DISCOVERY_FEED_PATH } from './discovery.js'
 
 export const DEFAULT_SITE_URL = 'https://securiva.vercel.app'
 
@@ -56,6 +58,8 @@ export function getStructuredData(page) {
   const serviceId = `${page.canonical}#service`
   const isService = ['pentest', 'api', 'label', 'bounty'].includes(page.kind)
   const isArticle = page.kind === 'resource'
+  const isBlogIndex = page.kind === 'blog-index'
+  const blogId = `${page.origin}/blog#blog`
   const areaServed = page.country ? { '@type':'Country', name:page.country } : [{ '@type':'Country', name:'Argentina' }, { '@type':'Country', name:'México' }]
   const graph = [
     {
@@ -87,7 +91,7 @@ export function getStructuredData(page) {
       inLanguage: page.language || siteIdentity.language,
       isPartOf: { '@id': websiteId },
       about: { '@id': organizationId },
-      mainEntity: { '@id': isService ? serviceId : isArticle ? `${page.canonical}#article` : organizationId },
+      mainEntity: { '@id': isService ? serviceId : isArticle ? `${page.canonical}#article` : isBlogIndex ? blogId : organizationId },
     },
   ]
   if (isService) {
@@ -108,12 +112,19 @@ export function getStructuredData(page) {
     description:page.description, inLanguage:page.language || 'es',
     author:{'@type':'Person','@id':`${page.origin}/sobre-securiva#luca-dessena-maffucci`,name:'Luca Dessena Maffucci',url:`${page.origin}/sobre-securiva#luca-dessena-maffucci`},
     publisher:{'@id':organizationId}, mainEntityOfPage:{'@id':webpageId},
-    datePublished:page.updatedAt || '2026-10-28', dateModified:page.updatedAt || '2026-10-28',
+    ...(page.publishedAt ? {datePublished:page.publishedAt} : {}),
+    ...(page.updatedAt ? {dateModified:page.updatedAt} : {}),
+    ...(page.isBlog ? {isPartOf:{'@id':blogId},articleSection:page.category} : {}),
     image:page.image,
+  })
+  if (isBlogIndex) graph.push({
+    '@type':'Blog','@id':blogId,name:'Blog de SECURIVA',url:`${page.origin}/blog`,
+    inLanguage:'es',publisher:{'@id':organizationId},
+    blogPost:blogPosts.map(post=>({'@id':`${page.origin}${post.path}#article`})),
   })
   if (page.path !== '/') graph.push({
     '@type':'BreadcrumbList', '@id':`${page.canonical}#breadcrumb`,
-    itemListElement:page.isBlog ? [{'@type':'ListItem',position:1,name:'SECURIVA',item:`${page.origin}/`},{'@type':'ListItem',position:2,name:'Blog',item:`${page.origin}/blog`},{'@type':'ListItem',position:3,name:page.title.split(' | ')[0],item:page.canonical}] : [{'@type':'ListItem',position:1,name:'SECURIVA',item:`${page.origin}/`},{'@type':'ListItem',position:2,name:page.title.split(' | ')[0],item:page.canonical}],
+    itemListElement:page.isBlog || page.kind === 'resource' ? [{'@type':'ListItem',position:1,name:'SECURIVA',item:`${page.origin}/`},{'@type':'ListItem',position:2,name:page.isBlog ? 'Blog' : 'Recursos',item:`${page.origin}${page.isBlog ? '/blog' : '/recursos'}`},{'@type':'ListItem',position:3,name:page.title.split(' | ')[0],item:page.canonical}] : [{'@type':'ListItem',position:1,name:'SECURIVA',item:`${page.origin}/`},{'@type':'ListItem',position:2,name:page.title.split(' | ')[0],item:page.canonical}],
   })
   return { '@context': 'https://schema.org', '@graph': graph }
 }
@@ -130,7 +141,10 @@ export function renderSeoHead(page) {
     `<meta name="description" content="${esc(page.description)}" />`,
     `<meta name="robots" content="${page.indexable ? 'index, follow, max-image-preview:large' : 'noindex, follow'}" />`,
     `<link rel="canonical" href="${esc(page.canonical)}" />`,
-    `<meta property="og:type" content="website" />`,
+    `<meta property="og:type" content="${page.kind === 'resource' ? 'article' : 'website'}" />`,
+    ...(page.kind === 'resource' && page.publishedAt ? [`<meta property="article:published_time" content="${esc(page.publishedAt)}" />`] : []),
+    ...(page.kind === 'resource' && page.updatedAt ? [`<meta property="article:modified_time" content="${esc(page.updatedAt)}" />`] : []),
+    ...(page.indexable ? [`<link rel="alternate" type="application/rss+xml" title="Blog de SECURIVA" href="${esc(page.origin + DISCOVERY_FEED_PATH)}" />`] : []),
     `<meta property="og:site_name" content="${esc(siteIdentity.name)}" />`,
     `<meta property="og:locale" content="${page.language === 'es-AR' ? 'es_AR' : 'es_MX'}" />`,
     `<meta property="og:title" content="${esc(page.title)}" />`,
@@ -156,5 +170,8 @@ export function renderRobots(env = {}) {
 
 export function renderSitemap(env = {}) {
   const origin = resolveSiteUrl(env)
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${seoPages.map(page => `  <url><loc>${escapeHtml(`${origin}${page.path === '/' ? '/' : page.path}`)}</loc></url>`).join('\n')}\n</urlset>\n`
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${seoPages.map(page => {
+    const lastmod=getContentLastmod(page)
+    return `  <url><loc>${escapeHtml(`${origin}${page.path === '/' ? '/' : page.path}`)}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}</url>`
+  }).join('\n')}\n</urlset>\n`
 }

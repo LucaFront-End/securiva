@@ -2,6 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { seoPages } from '../src/data/pageRegistry.js'
 import { blogPosts } from '../src/data/blog.js'
+import { editorialDate } from '../src/lib/editorialDate.js'
 import { DEFAULT_SITE_URL, getPageMetadata, getStructuredData, isIndexableBuild, normalizePagePath, renderRobots, renderSeoHead, renderSitemap, resolveSiteUrl } from '../src/seo/site.js'
 
 test('the public origin defaults to the live site and accepts an explicit domain migration', () => {
@@ -82,7 +83,8 @@ test('sitemap contains only the published pages and migrates consistently with t
   const sitemap = renderSitemap()
   assert.equal((sitemap.match(/<loc>/g) || []).length, seoPages.length)
   for (const page of seoPages) assert.ok(sitemap.includes(`<loc>${DEFAULT_SITE_URL}${page.path}</loc>`))
-  assert.ok(!sitemap.includes('<lastmod>'))
+  assert.equal((sitemap.match(/<lastmod>/g)||[]).length,seoPages.filter(page=>page.updatedAt).length)
+  for(const page of seoPages.filter(page=>page.updatedAt))assert.ok(sitemap.includes(`<lastmod>${page.updatedAt}</lastmod>`))
   assert.ok(!sitemap.includes('securiva.com'))
   const migrated = renderSitemap({ SEO_SITE_URL: 'https://example.org' })
   assert.ok(migrated.includes('https://example.org/pentesting-web'))
@@ -105,15 +107,29 @@ test('country pages use their actual service coverage and resources are articles
 test('blog entries have article metadata, author identity and working related routes', () => {
   assert.equal(blogPosts.length,16)
   for (const post of blogPosts) {
+    assert.ok(post.publishedAt,`Falta la fecha de primera publicación: ${post.path}`)
     const metadata=getPageMetadata(post.path)
     const graph=getStructuredData(metadata)['@graph']
     const article=graph.find(item=>item['@type']==='BlogPosting')
     assert.ok(article,post.path)
     assert.equal(article.author.url,`${DEFAULT_SITE_URL}/sobre-securiva#luca-dessena-maffucci`)
     assert.equal(article.image,metadata.image)
-    assert.equal(article.datePublished,post.updatedAt)
+    assert.equal(article.datePublished,post.publishedAt)
     assert.ok(!graph.some(item=>item['@type']==='Service'))
     assert.equal(graph.find(item=>item['@type']==='BreadcrumbList').itemListElement.length,3)
     for (const path of post.relatedPaths) assert.ok(seoPages.some(page=>page.path===path),`${post.path}: ${path}`)
   }
+})
+
+test('publication dates remain stable when content is revised and visible dates use UTC',()=>{
+  const metadata={...getPageMetadata('/blog/pentest-vs-escaneo-vulnerabilidades'),publishedAt:'2026-10-26',updatedAt:'2026-10-27'}
+  const article=getStructuredData(metadata)['@graph'].find(item=>item['@type']==='BlogPosting')
+  assert.equal(article.datePublished,'2026-10-26')
+  assert.equal(article.dateModified,'2026-10-27')
+  assert.equal(editorialDate('2026-10-28'),'28 de octubre de 2026')
+  assert.equal(editorialDate('2026-02-30'),undefined)
+  assert.equal(editorialDate(undefined),undefined)
+  const html=renderSeoHead(metadata)
+  assert.ok(html.includes('property="og:type" content="article"'))
+  assert.ok(html.includes('rel="alternate" type="application/rss+xml"'))
 })
